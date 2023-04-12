@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
 interface Message {
   text:string
@@ -8,11 +8,11 @@ interface Message {
 
 const Message:FC<Message>  = ({text, isSender}) => {
   return (
-    <div className={isSender ?  "message_right" : "message_left" }>
+    <div className={isSender ?  'message_right' : 'message_left' }>
       <div className="message__bubble" dir="auto">{text}</div>
       <div className="message__spacer"></div>
     </div>
   );
-}
+};
 
 export default Message;

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import Message from './Message'
+import React, { useEffect, useRef } from 'react';
+import Message from './Message';
 
 import { useLocation, useParams } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
@@ -8,18 +8,18 @@ import { ALL_MESSAGE_BETWEN_USERS } from '../queries/ALL_MESSAGE_BETWEN_USERS';
 
 const Messages = () => {
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser")!!);
+  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
 
   const location = useLocation();
-  const reciver = location.state.participants.filter( (participant: any) => participant.id != currentUser.id)[0]
-  const [allMessages, {loading, data, error}] = useLazyQuery(ALL_MESSAGE_BETWEN_USERS)
+  const reciver = location.state.participants.filter( (participant: any) => participant.id != currentUser.id)[0];
+  const [allMessages, {loading, data, error}] = useLazyQuery(ALL_MESSAGE_BETWEN_USERS);
 
   // Scrollea al final del div
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
 
-    allMessages({variables:{userId1:currentUser.id , userId2:reciver.id}})
+    allMessages({variables:{userId1:currentUser.id , userId2:reciver.id}});
 
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -34,11 +34,11 @@ if(data){
         data.allMessages.map((message:any) => <Message key={message.id} text={message.text} isSender={message.sender === currentUser.id ? true : false}/>)
       }
     </div>
-  )
+  );
 }else{
-  return <div></div>
+  return <div></div>;
 }
   
-}
+};
 
-export default Messages
+export default Messages;

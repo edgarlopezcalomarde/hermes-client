@@ -1,0 +1,49 @@
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .box {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+  width: 420px;
+}
+
+.login .box .input {
+  padding: 14px;
+  border-radius: 20px;
+  outline: 0;
+  background-color: rgb(199, 199, 199);
+  border: 0;
+  color: black;
+  width: 100%;
+}
+
+.login .box .title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.logo {
+  color: rgb(21, 21, 21);
+  text-align: center;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.btnLogin {
+  padding: 14px;
+  border-radius: 20px;
+  background-color: rgb(93, 106, 247);
+  border: 0;
+  margin-top: 20px;
+}
+
+button:focus {
+  outline: 0;
+}

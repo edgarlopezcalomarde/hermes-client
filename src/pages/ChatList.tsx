@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { FIND_CHAT_BY_ID } from "../queries/FIND_CHAT_BY_ID";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import { FIND_CHAT_BY_ID } from '../queries/FIND_CHAT_BY_ID';
 
 function ChatList() {
   const [findChatsById,{ data, error, loading }] = useLazyQuery(FIND_CHAT_BY_ID);
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser")!!);
+  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
 
   const navigate = useNavigate();
 
@@ -15,14 +15,14 @@ function ChatList() {
   }, []);
 
   const handleChat = (chat:any) => {
-    navigate("/chat", {state:{...chat}});
-  }
+    navigate('/chat', {state:{...chat}});
+  };
 
   if(loading) return <div>loading......</div>;
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <div style={{color: "black"}}>
+    <div style={{color: 'black'}}>
 
       <input type="search" name="chatSearch" id="chatSearch" />
 

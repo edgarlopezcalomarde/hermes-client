@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const FIND_CHAT_BY_ID = gql`
 query Query($findChatsByIdId: String) {

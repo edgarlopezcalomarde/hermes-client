@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { json, useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { LOG_IN } from "../mutations/LOG_IN";
+import React, { useContext, useEffect, useState } from 'react';
+import { json, useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOG_IN } from '../../mutations/LOG_IN';
+import './login.css';
+
+
 
 function Login() {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [login, result] = useMutation(LOG_IN, {
     onError: (error) => {
@@ -19,8 +22,8 @@ function Login() {
 
   useEffect(() => {
     if (result.data) {
-      localStorage.setItem("currentUser", JSON.stringify(result.data.login));
-      navigate("/chatlist");
+      localStorage.setItem('currentUser', JSON.stringify(result.data.login));
+      navigate('/chatlist');
     }
   }, [result.data]);
 
@@ -28,10 +31,13 @@ function Login() {
     login({ variables: { username, password } });
   };
 
+
+
+
   return (
     <div className="login">
 
-      <div style={{ color: "red"}}>{errorMessage}</div>
+      <div style={{ color: 'red'}}>{errorMessage}</div>
 
       <div className="box">
         <div className="logo">Hermes</div>

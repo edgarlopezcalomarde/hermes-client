@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const ALL_MESSAGE_BETWEN_USERS = gql`
 query AllMessages($userId1: String, $userId2: String) {
