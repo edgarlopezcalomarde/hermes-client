@@ -7,25 +7,23 @@ interface ContextProps {
 
 const DarkModeProvider = ({children}:ContextProps) => {
 
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const darkModeOn  = localStorage.getItem('darkModeOn') === 'true';
+
+  const [isDarkMode, setIsDarkMode] = useState(darkModeOn);
+
+  const setDarkMode = (value: boolean) => {
+    localStorage.setItem('darkModeOn', value.toString());
+    setIsDarkMode(value);
+  };
 
 
   return (
-    <ThemeContext.Provider value={{isDarkMode, setIsDarkMode}}>
+    <ThemeContext.Provider value={{isDarkMode, setDarkMode}}>
       {
         children
       }
     </ThemeContext.Provider>
   );
-  
-
-  // return (
-  //   <ThemeContext.Provider value={{isDarkMode, setIsDarkMode}}>
-  //     {
-  //       children
-  //     }
-  //   </ThemeContext.Provider>
-  // );
   
 };
 

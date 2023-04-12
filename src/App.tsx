@@ -10,25 +10,17 @@ import ThemeContext from './contexts/ThemeContext';
 
 function App() {
 
-
   const {isDarkMode} = useContext(ThemeContext);
   
-  useEffect(()=>{
-    console.log("dd" ,isDarkMode);
-  },[isDarkMode]);
-
-
+  console.log(isDarkMode);
   return (
     <div className="App">
 
-      
       <div className="switchMode">
         <ToggleButton />
-
         <div style={{color:'black'}}>{isDarkMode?'dark': 'light'}</div>
       </div>
       
-
       <BrowserRouter>
         <Routes>
           <Route path="/chat" element={<Chat />} />
