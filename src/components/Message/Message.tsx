@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
+import './Message.css';
 
 interface Message {
   text:string
   isSender:boolean
 }
-
 
 const Message:FC<Message>  = ({text, isSender}) => {
   return (

@@ -1,0 +1,35 @@
+.message_right {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.message_left {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.message__spacer {
+  flex: 1;
+}
+
+.message__bubble {
+  max-width: calc(100% - 67px);
+  overflow-wrap: break-word;
+
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.message_right .message__bubble {
+  border-top-right-radius: 0px;
+  background-color: rgb(65, 107, 232);
+  color: #f9f9f9;
+}
+
+.message_left .message__bubble {
+  border-top-left-radius: 0px;
+  background-color: #9a9a9a58;
+  color: black;
+}

@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import Message from './Message';
+import Message from '../Message/Message';
 
 import { useLocation, useParams } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
-import { ALL_MESSAGE_BETWEN_USERS } from '../queries/ALL_MESSAGE_BETWEN_USERS';
+import { ALL_MESSAGE_BETWEN_USERS } from '../../queries/ALL_MESSAGE_BETWEN_USERS';
+
+import './Messages.css';
 
 
 const Messages = () => {

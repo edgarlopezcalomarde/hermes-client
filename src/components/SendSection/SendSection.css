@@ -1,0 +1,28 @@
+.sendSection {
+  margin-top: auto;
+  display: flex;
+  padding: 14px;
+  gap: 10px;
+}
+
+.inputMessage {
+  flex: 1;
+  padding: 14px;
+  border-radius: 20px;
+  outline: 0;
+  background-color: rgb(199, 199, 199);
+  border: 0;
+  color: black;
+}
+
+.btnSend {
+  flex: 0.2;
+  border-radius: 200px;
+  font-size: 20px;
+  border: 0;
+  background-color: royalblue;
+  outline: none;
+  padding-top: 6px;
+  cursor: pointer;
+  color: white;
+}

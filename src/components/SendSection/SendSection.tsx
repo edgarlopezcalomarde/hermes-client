@@ -1,10 +1,10 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { CREATE_MESSAGE } from '../mutations/CREATE_MESSAGE';
-import { ALL_MESSAGE_BETWEN_USERS } from '../queries/ALL_MESSAGE_BETWEN_USERS';
+import { CREATE_MESSAGE } from '../../mutations/CREATE_MESSAGE';
+import { ALL_MESSAGE_BETWEN_USERS } from '../../queries/ALL_MESSAGE_BETWEN_USERS';
 import { FaLocationArrow} from 'react-icons/fa';
-
+import './SendSection.css';
 
 
 function SendSection() {

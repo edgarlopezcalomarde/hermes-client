@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Chat from './components/chat/Chat';
-import ChatList from './pages/chatlist/ChatList';
+import Home from './pages/Home/Home';
 import Login from './pages/login/Login';
-import './index.css';
 import ToggleButton from './components/ToggleButton/ToggleButton';
 import ThemeContext from './contexts/ThemeContext';
+
+import './index.css';
 
 function App() {
 
@@ -23,8 +23,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/chatlist" element={<ChatList />} />
+          <Route path="/chatlist" element={<Home />} />
           <Route path="/" element={<Login />} />
         </Routes>
       </BrowserRouter>

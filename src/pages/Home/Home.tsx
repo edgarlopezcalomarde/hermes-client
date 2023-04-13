@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { FIND_CHAT_BY_ID } from '../../queries/FIND_CHAT_BY_ID';
-import './chatlist.css';
+import './Home.css';
 import Chat from '../../components/chat/Chat';
 import Welcome from '../../components/Welcome/Welcome';
+import Status from '../../components/Status/Status';
 
-import { RiLogoutBoxFill } from 'react-icons/ri';
 
 
 function ChatList() {
@@ -37,10 +37,7 @@ function ChatList() {
 
         <div className='chatForm'>
 
-          <div className="status">
-            <h3>Online</h3>
-            <RiLogoutBoxFill className='btnLogout'/>
-          </div>
+          <Status status='online'/>
 
           <div className='contactList'>
 
@@ -58,7 +55,7 @@ function ChatList() {
                     (participant:any) => participant.id != currentUser.id
                   );
 
-                  return <li key={chat.id} onClick={()=>handleChat(chat)}> {reciver.username}</li>;
+                  return <li key={chat.id} onClick={()=>handleChat(chat)} className='contact'> {reciver.username}</li>;
                 })
               
               }
