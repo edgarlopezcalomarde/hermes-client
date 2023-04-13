@@ -1,8 +1,11 @@
 import React from 'react';
-import Messages from '../components/Messages';
-import SendSection from '../components/SendSection';
-import { FaArrowLeft } from 'react-icons/fa';
+import Messages from '../Messages';
+import SendSection from '../SendSection';
+import { FaArrowLeft} from 'react-icons/fa';
+
 import { useLocation, useNavigate } from 'react-router-dom';
+import './chat.css';
+
 
 function Chat() {
 

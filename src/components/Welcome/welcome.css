@@ -1,0 +1,16 @@
+.welcome{
+    /* border: 2px solid red; */
+    height: 100%;
+    width: 1068px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+    /* border-right: 1px solid rgb(30, 30, 30); */
+    border-left: 1px solid rgb(30, 30, 30);
+
+
+}

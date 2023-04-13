@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #f9f9f9;
 
@@ -13,6 +12,32 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--bg--dark);
+    --txt: var(--txt--dark);
+    --accent: var(--accent--dark);
+    --accent1: var(--accent1--dark);
+    --muted: var(--muted--dark);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--bg--light);
+    --txt: var(--txt--light);
+    --accent: var(--accent--light);
+    --accent1: var(--accent1--light);
+    --muted: var(--muted--light);
+    color-scheme: light;
+  }
+}
+
+
+
 
 *{
   margin: 0;
@@ -27,28 +52,14 @@
 
 /*Messages*/
 
-.chat{
-  /* border: 2px solid red; */
-  height: 100vh;
-  width: 1068px;
-  margin: auto;
-
-  display: flex;
-  flex-direction: column;
-
-  border-right: 1px solid rgb(30, 30, 30);
-  border-left: 1px solid rgb(30, 30, 30);
-
-
-
-}
-
 .messages {
   /* border: 2px solid blue; */
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .messages::-webkit-scrollbar {display: none;}
@@ -117,8 +128,9 @@
   border: 0;
   background-color: royalblue;
   outline: none;
+  padding-top: 6px;
+  cursor: pointer;
 }
-
 
 
 .switchMode{

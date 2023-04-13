@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Chat from './pages/Chat';
-import ChatList from './pages/ChatList';
+import Chat from './components/chat/Chat';
+import ChatList from './pages/chatlist/ChatList';
 import Login from './pages/login/Login';
 import './index.css';
 import ToggleButton from './components/ToggleButton/ToggleButton';

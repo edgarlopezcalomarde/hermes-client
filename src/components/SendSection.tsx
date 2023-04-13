@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { CREATE_MESSAGE } from '../mutations/CREATE_MESSAGE';
 import { ALL_MESSAGE_BETWEN_USERS } from '../queries/ALL_MESSAGE_BETWEN_USERS';
+import { FaLocationArrow} from 'react-icons/fa';
+
 
 
 function SendSection() {
@@ -20,13 +22,14 @@ function SendSection() {
 
   const handleSend = () =>{
     createMessage({variables:{text:message, receiver:reciver.id, sender: currentUser.id}});
+    setMessage('');
   };
 
   return (
     <div className='sendSection'>
         <input type="text" placeholder="Escribe un mensaje......" className='inputMessage' value={message} onChange={(e)=> setMessage(e.target.value)}/> 
         <button className='btnSend' onClick={handleSend}>
-            ✈
+            <FaLocationArrow/>
         </button>
     </div> 
   );

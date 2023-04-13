@@ -14,6 +14,8 @@ const DarkModeProvider = ({children}:ContextProps) => {
   const setDarkMode = (value: boolean) => {
     localStorage.setItem('darkModeOn', value.toString());
     setIsDarkMode(value);
+
+    document.documentElement.setAttribute('color-scheme', 'light');
   };
 
 

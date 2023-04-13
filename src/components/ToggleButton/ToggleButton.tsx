@@ -12,9 +12,9 @@ function ToggleButton() {
   };
 
   return (
-    <label className="switch">
+    <label className="switch" >
       <input type="checkbox" />
-      <span className="slider" onClick={handleClick}></span>
+      <span className="slider"  onClick={handleClick}></span>
     </label>
   );
 }
