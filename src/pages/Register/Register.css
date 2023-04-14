@@ -1,4 +1,4 @@
-.login {
+.register {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   background-color: var(--background);
 }
 
-.login .box {
+.register .box {
   display: flex;
   flex-direction: column;
 
@@ -15,9 +15,9 @@
   width: 420px;
 }
 
-.login .box .input {
+.register .box .input {
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 20px;
   outline: 0;
   background-color: rgb(199, 199, 199);
   border: 0;
@@ -27,7 +27,7 @@
   font-weight: 500;
 }
 
-.login .box .title {
+.register .box .title {
   font-size: 20px;
   font-weight: 500;
   color: var(--text-primary);
@@ -41,9 +41,9 @@
   font-weight: 700;
 }
 
-.btnLogin {
+.btnRegister {
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: royalblue;
   border: 0;
   margin-top: 20px;
@@ -54,14 +54,13 @@
   letter-spacing: 1px;
 
   color: white;
-  cursor: pointer;
 }
 
 button:focus {
   outline: 0;
 }
 
-.linkToRegister{
+.linkToLogin{
   margin-top: 20px;
   font-weight: 600;
   font-size: 18px;
@@ -73,4 +72,8 @@ button:focus {
   gap: 10px;
 
   cursor: pointer;
+}
+
+.logInIcon{
+  font-size: 24px;
 }

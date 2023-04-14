@@ -3,17 +3,24 @@ import './toggleButton.css';
 import ThemeContext from '../../contexts/ThemeContext';
 
 function ToggleButton() {
-  const { isDarkMode, setDarkMode } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleClick = () => {
     //  e.preventDefault(); //Aqui se actualiza no se por que
     // No ponerle a la label el onclick porque  falla el contextp por el event que actualiza el componente y lo renderiza de nuevo
-    setDarkMode(!isDarkMode);
+    // setDarkMode(!isDarkMode);
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', `"${newTheme}"`);
   };
 
   return (
     <label className="switch" htmlFor="checkButton">
-      <input type="checkbox" id="checkButton" />
+      <input
+        type="checkbox"
+        id="checkButton"
+        defaultChecked={theme === 'light'}
+      />
       <span
         className="slider"
         onClick={handleClick}

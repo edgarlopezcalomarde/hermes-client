@@ -36,6 +36,12 @@ function ChatList() {
         <div className="chatForm">
           <Status status="online" />
 
+          <div className="tt">
+            <button type="submit">Contact List</button>
+            <button type="submit">Network Users</button>
+            <button type="submit">Friend Requests</button>
+          </div>
+
           <div className="contactList">
             <div className="searchContact">
               <input

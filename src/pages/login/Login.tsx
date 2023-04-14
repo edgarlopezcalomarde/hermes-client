@@ -62,8 +62,18 @@ function Login() {
           onKeyDown={handleLogIn}
           type="submit"
         >
-          Iniciar Sesion
+          Log In
         </button>
+      </div>
+
+      <div
+        role="button"
+        onClick={() => navigate('/register')}
+        onKeyDown={() => navigate('/register')}
+        tabIndex={0}
+        className="linkToRegister"
+      >
+        I don't have an account yet
       </div>
     </div>
   );

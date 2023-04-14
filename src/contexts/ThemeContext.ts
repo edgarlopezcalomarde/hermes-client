@@ -1,15 +1,13 @@
 import { createContext } from 'react';
 
-interface IThemeContext {
-  isDarkMode: boolean;
-  setDarkMode: (value: boolean) => void;
+interface ThemeContextType {
+  theme: string;
+  setTheme: (value: string) => void;
 }
 
-const darkModeOn = localStorage.getItem('darkModeOn') === 'true';
-
-const ThemeContext = createContext<IThemeContext>({
-  isDarkMode: darkModeOn,
-  setDarkMode: () => {},
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
 });
 
 export default ThemeContext;
