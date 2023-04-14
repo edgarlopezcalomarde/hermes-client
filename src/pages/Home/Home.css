@@ -58,3 +58,14 @@
     list-style: none;
 
 }
+
+
+.leftPanelButtonsBox{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    border-bottom:  1px solid rgb(30, 30, 30);
+
+}

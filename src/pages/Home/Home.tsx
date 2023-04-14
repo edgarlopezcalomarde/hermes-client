@@ -36,7 +36,7 @@ function ChatList() {
         <div className="chatForm">
           <Status status="online" />
 
-          <div className="tt">
+          <div className="leftPanelButtonsBox">
             <button type="submit">Contact List</button>
             <button type="submit">Network Users</button>
             <button type="submit">Friend Requests</button>
@@ -61,12 +61,11 @@ function ChatList() {
                   );
 
                   return (
-                    <li key={chat.id}>
+                    <li key={chat.id} className="contact">
                       <div
                         onClick={() => handleChat(chat)}
                         onKeyDown={() => handleChat(chat)}
                         role="button"
-                        className="contact"
                         tabIndex={0}
                       >
                         {reciver.username}

@@ -1,21 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { setContext } from '@apollo/client/link/context';
 import {
   ApolloClient,
   ApolloProvider,
-  HttpLink,
   InMemoryCache,
+  createHttpLink,
 } from '@apollo/client';
 import App from './App';
 import './index.css';
 import DarkModeProvider from './contexts/DarkModeProvider';
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('current-user-token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : null,
+    },
+  };
+});
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000',
+});
+
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'http://localhost:4000/',
-  }),
+  link: authLink.concat(httpLink),
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

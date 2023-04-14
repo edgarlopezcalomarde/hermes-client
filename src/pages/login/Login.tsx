@@ -20,6 +20,8 @@ function Login() {
 
   useEffect(() => {
     if (result.data) {
+      const { token } = result.data.login;
+      localStorage.setItem('current-user-token', token);
       localStorage.setItem('currentUser', JSON.stringify(result.data.login));
       navigate('/chatlist');
     }
