@@ -1,0 +1,76 @@
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+}
+
+.login .box {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+  width: 420px;
+}
+
+.login .box .input {
+  padding: 14px;
+  border-radius: 10px;
+  outline: 0;
+  background-color: rgb(199, 199, 199);
+  border: 0;
+  color: black;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.login .box .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding-left: 0px;
+}
+
+.logo {
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.btnLogin {
+  padding: 14px;
+  border-radius: 10px;
+  background-color: royalblue;
+  border: 0;
+  margin-top: 20px;
+
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+
+  color: white;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.linkToRegister{
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration:underline;
+  color: var(--text-primary);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
+}
