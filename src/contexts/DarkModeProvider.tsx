@@ -1,13 +1,12 @@
-import React, {  ReactNode, useState } from 'react';
+import React, { ReactNode, useMemo, useState } from 'react';
 import ThemeContext from './ThemeContext';
 
 interface ContextProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const DarkModeProvider = ({children}:ContextProps) => {
-
-  const darkModeOn  = localStorage.getItem('darkModeOn') === 'true';
+function DarkModeProvider({ children }: ContextProps) {
+  const darkModeOn = localStorage.getItem('darkModeOn') === 'true';
 
   const [isDarkMode, setIsDarkMode] = useState(darkModeOn);
 
@@ -15,18 +14,21 @@ const DarkModeProvider = ({children}:ContextProps) => {
     localStorage.setItem('darkModeOn', value.toString());
     setIsDarkMode(value);
 
+    console.log(value);
+
     document.documentElement.setAttribute('color-scheme', 'light');
   };
 
+  const darkModeMemo = useMemo(
+    () => ({ isDarkMode, setDarkMode }),
+    [isDarkMode],
+  );
 
   return (
-    <ThemeContext.Provider value={{isDarkMode, setDarkMode}}>
-      {
-        children
-      }
+    <ThemeContext.Provider value={darkModeMemo}>
+      {children}
     </ThemeContext.Provider>
   );
-  
-};
+}
 
 export default DarkModeProvider;

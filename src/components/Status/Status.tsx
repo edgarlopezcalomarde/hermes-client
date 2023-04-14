@@ -2,13 +2,11 @@ import React from 'react';
 import { RiLogoutBoxFill } from 'react-icons/ri';
 import './Status.css';
 
-
-
-interface Status{
-    status: string
+interface IStatus {
+  status: string;
 }
 
-function Status({status}:Status) {
+function Status({ status }: IStatus) {
   return (
     <div className="status">
       <h3>{status}</h3>

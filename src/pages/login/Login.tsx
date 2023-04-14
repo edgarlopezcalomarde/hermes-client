@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { json, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOG_IN } from '../../mutations/LOG_IN';
 import './login.css';
-
-
+import LOG_IN from '../../mutations/LOG_IN';
 
 function Login() {
   const navigate = useNavigate();
@@ -31,13 +29,9 @@ function Login() {
     login({ variables: { username, password } });
   };
 
-
-
-
   return (
     <div className="login">
-
-      <div style={{ color: 'red'}}>{errorMessage}</div>
+      <div style={{ color: 'red' }}>{errorMessage}</div>
 
       <div className="box">
         <div className="logo">Hermes</div>
@@ -62,7 +56,12 @@ function Login() {
           />
         </div>
 
-        <button className="btnLogin" onClick={handleLogIn}>
+        <button
+          className="btnLogin"
+          onClick={handleLogIn}
+          onKeyDown={handleLogIn}
+          type="submit"
+        >
           Iniciar Sesion
         </button>
       </div>

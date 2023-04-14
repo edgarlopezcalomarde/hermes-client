@@ -1,18 +1,20 @@
-import React, { FC } from 'react';
+import React from 'react';
 import './Message.css';
 
-interface Message {
-  text:string
-  isSender:boolean
+interface IMessage {
+  text: string;
+  isSender: boolean;
 }
 
-const Message:FC<Message>  = ({text, isSender}) => {
+function Message({ text, isSender }: IMessage) {
   return (
-    <div className={isSender ?  'message_right' : 'message_left' }>
-      <div className="message__bubble" dir="auto">{text}</div>
-      <div className="message__spacer"></div>
+    <div className={isSender ? 'message_right' : 'message_left'}>
+      <div className="message__bubble" dir="auto">
+        {text}
+      </div>
+      <div className="message__spacer" />
     </div>
   );
-};
+}
 
 export default Message;
