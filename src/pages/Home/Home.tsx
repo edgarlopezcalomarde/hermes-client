@@ -9,8 +9,13 @@ import Status from '../../components/Status/Status';
 import FIND_CHAT_BY_ID from '../../queries/FIND_CHAT_BY_ID';
 import ContactList from '../../components/ContactList/ContactList';
 import NetworkUsers from '../../components/NetworkUsers/NetworkUsers';
+import FriendRequestList from '../../components/FriendRequestList/FriendRequestList';
 
 function ChatList() {
+  const [isNetwork, setIsNetWork] = useState(true);
+  const [isContact, setIsContact] = useState(false);
+  const [isFriendRequest, setIsFriendRequest] = useState(false);
+
   const [findChatsById, { data, error, loading }] =
     useLazyQuery(FIND_CHAT_BY_ID);
 
@@ -39,20 +44,49 @@ function ChatList() {
           <Status status="online" />
 
           <div className="leftPanelButtonsBox">
-            <button type="submit">Network Users</button>
-            <button type="submit">Contact List</button>
-            <button type="submit">Friend Requests</button>
+            <button
+              type="submit"
+              onClick={() => {
+                setIsNetWork(true);
+                setIsContact(false);
+                setIsFriendRequest(false);
+              }}
+            >
+              Network Users
+            </button>
+
+            <button
+              type="submit"
+              onClick={() => {
+                setIsNetWork(false);
+                setIsContact(true);
+                setIsFriendRequest(false);
+              }}
+            >
+              Contact List
+            </button>
+
+            <button
+              type="submit"
+              onClick={() => {
+                setIsNetWork(false);
+                setIsContact(false);
+                setIsFriendRequest(true);
+              }}
+            >
+              Friend Requests
+            </button>
           </div>
 
-          {false && (
+          {isNetwork && <NetworkUsers />}
+          {isContact && (
             <ContactList
               data={data}
               handleChat={handleChat}
               currentUser={currentUser}
             />
           )}
-
-          <NetworkUsers />
+          {isFriendRequest && <FriendRequestList />}
         </div>
 
         {isChat ? <Chat /> : <Welcome />}

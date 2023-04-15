@@ -3,16 +3,24 @@ import { gql } from '@apollo/client';
 const CURRENT_USER_LOGGED = gql`
   query Query {
     getCurrentUser {
-      id
       friends {
         id
         username
       }
+      id
+      username
       friendRequest {
         id
-        username
+        to {
+          id
+          username
+        }
+        status
+        from {
+          id
+          username
+        }
       }
-      username
     }
   }
 `;
