@@ -7,6 +7,8 @@ import Chat from '../../components/chat/Chat';
 import Welcome from '../../components/Welcome/Welcome';
 import Status from '../../components/Status/Status';
 import FIND_CHAT_BY_ID from '../../queries/FIND_CHAT_BY_ID';
+import ContactList from '../../components/ContactList/ContactList';
+import NetworkUsers from '../../components/NetworkUsers/NetworkUsers';
 
 function ChatList() {
   const [findChatsById, { data, error, loading }] =
@@ -31,50 +33,26 @@ function ChatList() {
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <div className="chatlistPage">
-      <div className="content">
-        <div className="chatForm">
+    <div className="homePage">
+      <div className="chatLayout">
+        <div className="leftPanel">
           <Status status="online" />
 
           <div className="leftPanelButtonsBox">
-            <button type="submit">Contact List</button>
             <button type="submit">Network Users</button>
+            <button type="submit">Contact List</button>
             <button type="submit">Friend Requests</button>
           </div>
 
-          <div className="contactList">
-            <div className="searchContact">
-              <input
-                type="search"
-                name="chatSearch"
-                id="chatSearch"
-                className="inputSearch"
-              />
-            </div>
+          {false && (
+            <ContactList
+              data={data}
+              handleChat={handleChat}
+              currentUser={currentUser}
+            />
+          )}
 
-            <div className="list">
-              {data &&
-                data.findChatsById.map((chat: any) => {
-                  const { participants } = chat;
-                  const reciver = participants.find(
-                    (participant: any) => participant.id !== currentUser.id,
-                  );
-
-                  return (
-                    <li key={chat.id} className="contact">
-                      <div
-                        onClick={() => handleChat(chat)}
-                        onKeyDown={() => handleChat(chat)}
-                        role="button"
-                        tabIndex={0}
-                      >
-                        {reciver.username}
-                      </div>
-                    </li>
-                  );
-                })}
-            </div>
-          </div>
+          <NetworkUsers />
         </div>
 
         {isChat ? <Chat /> : <Welcome />}

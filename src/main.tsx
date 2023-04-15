@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { setContext } from '@apollo/client/link/context';
 import {
   ApolloClient,
+  ApolloLink,
   ApolloProvider,
   InMemoryCache,
   createHttpLink,
@@ -28,7 +29,7 @@ const httpLink = createHttpLink({
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link: ApolloLink.from([authLink, httpLink]),
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
