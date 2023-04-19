@@ -19,8 +19,19 @@ function FriendList({ openChat }: any) {
     if (data) {
       setFriends(data.getCurrentUser.friends);
     }
-    if (result.data) {
-      openChat(result.data.findChatsById[0]);
+    if (result) {
+      if (result.data) {
+        const { findChatsByIdId }: any = result.variables;
+        if (findChatsByIdId) {
+          const chatIndex = result.data.findChatsById.findIndex((chat: any) =>
+            chat.participants.includes(findChatsByIdId),
+          );
+
+          console.log(result.data.findChatsById);
+
+          // openChat(result.data.findChatsById[chatIndex]);
+        }
+      }
     }
   }, [data, result]);
 
