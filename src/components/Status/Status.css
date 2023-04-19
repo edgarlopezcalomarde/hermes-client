@@ -1,5 +1,6 @@
 .status{
-    border-bottom:  1px solid rgb(30, 30, 30);
+    border-bottom:  #bbbdff 1px solid;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

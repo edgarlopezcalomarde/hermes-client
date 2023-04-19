@@ -13,18 +13,24 @@
 
 .chatLayout{
 
-    width: 1400px;
+    width: 1500px;
     height: 800px;
 
-    display: flex;
 
-    border:  1px solid rgb(30, 30, 30);
+    display: flex;
+    border: #bbbdff 1px solid;
+    border-radius: 10px;
 }
 
 .leftPanel{
-    flex: 1;
+    flex: 0.7;
     display: flex;
     flex-direction: column;
+
+    background-color: #FDFDFF;
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 
@@ -35,6 +41,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
+ 
 }
 
 .inputSearch{
@@ -67,5 +74,7 @@
     padding-bottom: 10px;
     align-items: center;
     border-bottom:  1px solid rgb(30, 30, 30);
+
+    
 
 }

@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 
-import CREATE_USER from '../../mutations/CREATE_USER';
-
 import './Register.css';
+import CREATE_USER from '../../graphql/mutations/CREATE_USER';
 
 function Register() {
   const [errorMessage, setErrorMessage] = useState('');

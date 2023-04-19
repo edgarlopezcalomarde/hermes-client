@@ -7,7 +7,7 @@
 
 
 .searchUser{
-    border-bottom:  1px solid rgb(30, 30, 30);
+    border-bottom:  #bbbdff 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +28,7 @@
 
 
 .user{
-    border-bottom:  1px solid rgb(30, 30, 30);
+    border-bottom:  #bbbdff 1px solid;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 30px;

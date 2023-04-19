@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaLocationArrow } from 'react-icons/fa';
 import './SendSection.css';
-import ALL_MESSAGE_BETWEN_USERS from '../../queries/ALL_MESSAGE_BETWEN_USERS';
-import CREATE_MESSAGE from '../../mutations/CREATE_MESSAGE';
+import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
+import CREATE_MESSAGE from '../../graphql/mutations/CREATE_MESSAGE';
 
 function SendSection() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);

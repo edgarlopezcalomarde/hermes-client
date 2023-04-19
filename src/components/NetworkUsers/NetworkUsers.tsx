@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { RiAddFill } from 'react-icons/ri';
-import ALL_USERS from '../../queries/ALL_USERS';
+import ALL_USERS from '../../graphql/queries/ALL_USERS';
 import './NetworkUsers.css';
-import SEND_FRIEND_REQUEST from '../../mutations/SEND_FRIEND_REQUEST';
+import SEND_FRIEND_REQUEST from '../../graphql/mutations/SEND_FRIEND_REQUEST';
 
 function NetworkUsers() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);

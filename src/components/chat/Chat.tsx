@@ -21,7 +21,7 @@ function Chat() {
           display: 'flex',
           justifyContent: 'space-between',
           padding: '20px 20px',
-          borderBottom: '1px solid rgb(30, 30, 30)',
+          borderBottom: '#bbbdff 1px solid',
         }}
       >
         <div style={{ display: 'flex' }}>

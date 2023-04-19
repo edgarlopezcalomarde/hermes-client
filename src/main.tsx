@@ -14,6 +14,7 @@ import DarkModeProvider from './contexts/DarkModeProvider';
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('current-user-token');
+
   return {
     headers: {
       ...headers,

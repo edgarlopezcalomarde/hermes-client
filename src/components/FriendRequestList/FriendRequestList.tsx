@@ -1,15 +1,26 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 
 import { AiOutlineCheck } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 
-import CURRENT_USER_LOGGED from '../../queries/CURRENT_USER_LOGGED';
+import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
+import ACEEPT_FRIEND_REQUEST from '../../graphql/mutations/ACEEPT_FRIEND_REQUEST';
 
 function FriendRequestList() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
 
+  const [acceptFriendRequest, result] = useMutation(ACEEPT_FRIEND_REQUEST, {
+    refetchQueries: [
+      {
+        query: CURRENT_USER_LOGGED,
+      },
+    ],
+    onError: (errore: any) => {
+      console.log(errore);
+    },
+  });
   const [errorMessage, setErrorMessage] = useState('');
   const [friendRequests, setFriendRequests] = useState([]);
 
@@ -20,7 +31,11 @@ function FriendRequestList() {
   }, [data]);
 
   const handleClickAccept = (id: string) => {
-    console.log(id);
+    acceptFriendRequest({
+      variables: {
+        requestId: id,
+      },
+    });
   };
 
   const handleClickDecline = (id: string) => {

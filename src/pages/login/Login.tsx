@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import './login.css';
-import LOG_IN from '../../mutations/LOG_IN';
+import LOG_IN from '../../graphql/mutations/LOG_IN';
 
 function Login() {
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ function Login() {
 
   const [login, result] = useMutation(LOG_IN, {
     onError: (error) => {
+      console.log(error);
+      // setErrorMessage(error.graphQLErrors[0].message);
       setErrorMessage(error.graphQLErrors[0].message);
     },
   });

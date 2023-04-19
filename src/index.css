@@ -12,30 +12,28 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji;
 }
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
-
-
-.switchMode{
+.switchMode {
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
-
-[data-theme='light']  {
+[data-theme='light'] {
   --background: 240 30% 94%;
-  --text-primary: rgb(27, 27, 27);;
+  --text-primary: rgb(27, 27, 27);
   --text-secondary: royalblue;
   --text-terciary: black;
 
@@ -44,7 +42,7 @@
 
 [data-theme='dark'] {
   --background: #282834;
-  --background2:rgb(92, 92, 92);
+  --background2: rgb(92, 92, 92);
 
   --text-primary: #ffffff;
   --text-secondary: grey;
