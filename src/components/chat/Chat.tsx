@@ -8,6 +8,7 @@ import './chat.css';
 function Chat() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
   const location = useLocation();
+
   const reciver = location.state.participants.filter(
     (participant: any) => participant.id !== currentUser.id,
   )[0];
