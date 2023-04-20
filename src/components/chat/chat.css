@@ -1,8 +1,7 @@
 .chat{
    
     height: 100%;
-    width: 1068px;
-  
+
     display: flex;
     flex-direction: column;
   
