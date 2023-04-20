@@ -49,7 +49,7 @@ function FriendList({ openChat }: any) {
                   role="button"
                   tabIndex={0}
                 >
-                  {friend.id}
+                  {friend.username}
                 </div>
               </li>
             );

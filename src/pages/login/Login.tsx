@@ -15,7 +15,6 @@ function Login() {
   const [login, result] = useMutation(LOG_IN, {
     onError: (error) => {
       console.log(error);
-      // setErrorMessage(error.graphQLErrors[0].message);
       setErrorMessage(error.graphQLErrors[0].message);
     },
   });
