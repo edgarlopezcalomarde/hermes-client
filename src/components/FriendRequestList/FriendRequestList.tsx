@@ -8,7 +8,6 @@ import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import ACEEPT_FRIEND_REQUEST from '../../graphql/mutations/ACEEPT_FRIEND_REQUEST';
 
 function FriendRequestList() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
 
   const [acceptFriendRequest, result] = useMutation(ACEEPT_FRIEND_REQUEST, {

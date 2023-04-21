@@ -1,12 +1,12 @@
 import React from 'react';
-import './welcome.css';
+import WelcomeLayout from './WelcomeStyle';
 
 function Welcome() {
   return (
-    <div className="welcome">
+    <WelcomeLayout>
       <h1>👋 Bienvenido a Hermes</h1>
       <h2>Conecta, Conversa y Comparte </h2>
-    </div>
+    </WelcomeLayout>
   );
 }
 

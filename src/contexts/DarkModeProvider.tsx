@@ -1,7 +1,15 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, { ReactNode, useMemo, useState, createContext } from 'react';
 import useLocalStorage from 'use-local-storage';
-import ThemeContext from './ThemeContext';
+
+interface ThemeContextType {
+  theme: string;
+  setTheme: (value: string) => void;
+}
+
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
+});
 
 interface ContextProps {
   children: ReactNode;
@@ -13,8 +21,6 @@ function DarkModeProvider({ children }: ContextProps) {
     'theme',
     defaultDark ? 'dark' : 'light',
   );
-
-  // console.log(defaultDark);
 
   const [theme, setTheme] = useState<string>(themeDefault);
   const themeMemo = useMemo(() => ({ theme, setTheme }), [theme]);

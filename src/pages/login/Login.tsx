@@ -14,7 +14,6 @@ function Login() {
 
   const [login, result] = useMutation(LOG_IN, {
     onError: (error) => {
-      console.log(error);
       setErrorMessage(error.graphQLErrors[0].message);
     },
   });
@@ -28,7 +27,8 @@ function Login() {
     }
   }, [result.data]);
 
-  const handleLogIn = async () => {
+  const handleLogIn = async (e: any) => {
+    e.preventDefault();
     login({ variables: { username, password } });
   };
 
@@ -36,7 +36,7 @@ function Login() {
     <div className="login">
       <div style={{ color: 'red' }}>{errorMessage}</div>
 
-      <div className="box">
+      <form className="box" onSubmit={handleLogIn}>
         <div className="logo">Hermes</div>
 
         <div>
@@ -59,15 +59,10 @@ function Login() {
           />
         </div>
 
-        <button
-          className="btnLogin"
-          onClick={handleLogIn}
-          onKeyDown={handleLogIn}
-          type="submit"
-        >
+        <button className="btnLogin" type="submit">
           Log In
         </button>
-      </div>
+      </form>
 
       <div
         role="button"
