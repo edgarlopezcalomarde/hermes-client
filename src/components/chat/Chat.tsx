@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Messages from '../Messages/Messages';
 import SendSection from '../SendSection/SendSection';
 
-import './chat.css';
+import { ChatBox } from './ChatStyle';
 
 function Chat() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
@@ -14,7 +14,7 @@ function Chat() {
   )[0];
 
   return (
-    <div className="chat">
+    <ChatBox>
       <div
         style={{
           color: 'black',
@@ -34,7 +34,7 @@ function Chat() {
 
       <Messages />
       <SendSection />
-    </div>
+    </ChatBox>
   );
 }
 

@@ -13,11 +13,16 @@ export const HomePageLayout = styled.div`
 export const LeftPanel = styled.div`
   border: 2px solid red;
   flex: 0.4;
-  height: 95%;
+
+  padding: 10px;
+
+  margin-top: 60px;
+
+  border: #bbbdff 1px solid;
+  border-radius: 6px;
 `;
 
 export const ChatPanel = styled.div`
-  border: 2px solid green;
   flex: 1;
 `;
 

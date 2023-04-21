@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useApolloClient } from '@apollo/client';
 
 import Chat from '../../components/chat/Chat';
 import Welcome from '../../components/Welcome/Welcome';
@@ -13,10 +14,17 @@ function ChatList() {
   const [isChat, setIsChat] = useState(false);
 
   const navigate = useNavigate();
+  const client = useApolloClient();
 
   const openChat = (chat: any) => {
     setIsChat(true);
     navigate('/chatlist', { state: { ...chat } });
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    client.resetStore();
+    navigate('/');
   };
 
   return (

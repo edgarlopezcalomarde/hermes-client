@@ -9,14 +9,8 @@ interface IStatus {
 }
 
 function Status({ status }: IStatus) {
-  const client = useApolloClient();
-  const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.clear();
-    client.resetStore();
-    navigate('/');
-  };
+  
 
   return (
     <div className="status">
