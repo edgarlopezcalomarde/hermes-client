@@ -1,15 +1,19 @@
-import React, { ReactNode, createContext, useMemo, useState } from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  loginAuth: () => void;
-  logoutAuth: () => void;
+  setIsAuthenticated: (value: boolean) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
-  loginAuth: () => {},
-  logoutAuth: () => {},
+  setIsAuthenticated: () => {},
 });
 
 interface ContextProps {
@@ -17,18 +21,19 @@ interface ContextProps {
 }
 
 function AuthProvider({ children }: ContextProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated') === 'true',
+  );
 
-  const loginAuth = () => {
-    setIsAuthenticated(true);
-  };
-
-  const logoutAuth = () => {
-    setIsAuthenticated(false);
-  };
+  useEffect(() => {
+    localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+  }, [isAuthenticated]);
 
   const authValue = useMemo(
-    () => ({ isAuthenticated, loginAuth, logoutAuth }),
+    () => ({
+      isAuthenticated,
+      setIsAuthenticated,
+    }),
     [isAuthenticated],
   );
 

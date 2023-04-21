@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import './login.css';
 import LOG_IN from '../../graphql/mutations/LOG_IN';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 function Login() {
   const navigate = useNavigate();
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,11 +27,16 @@ function Login() {
       localStorage.setItem('currentUser', JSON.stringify(result.data.login));
       navigate('/chatlist');
     }
+
+    if (isAuthenticated) {
+      navigate('/chatlist');
+    }
   }, [result.data]);
 
   const handleLogIn = async (e: any) => {
     e.preventDefault();
     login({ variables: { username, password } });
+    setIsAuthenticated(true);
   };
 
   return (

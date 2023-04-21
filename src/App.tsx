@@ -36,7 +36,7 @@ function App() {
             <Route
               path="/chatlist"
               element={
-                <ProtectedRoute isAuthenticated={isAuth()} redirectTo="/">
+                <ProtectedRoute isAuthenticated={() => isAuth()} redirectTo="/">
                   <Home />
                 </ProtectedRoute>
               }
