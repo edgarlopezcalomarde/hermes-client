@@ -6,7 +6,7 @@ const WelcomeLayout = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #fdfdff;
+  background-color: var(--background);
   height: 100%;
   border-radius: 6px;
 `;

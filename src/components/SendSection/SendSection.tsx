@@ -46,6 +46,8 @@ function SendSection() {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
+
+      {/* Implementar un menu de reacciones rollo un emoji menu */}
       <button className="btnSend" onClick={handleSend} type="submit">
         <FaLocationArrow />
       </button>

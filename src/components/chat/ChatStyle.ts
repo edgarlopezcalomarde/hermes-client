@@ -8,7 +8,7 @@ export const ChatBox = styled.div`
 `;
 
 export const ConversationHeader = styled.div`
-  color: black;
+  color: var(--text-primary);
   font-size: 30px;
 
   display: flex;

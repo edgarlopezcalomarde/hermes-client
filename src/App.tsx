@@ -17,11 +17,6 @@ import AuthProvider from './contexts/AuthProvider';
 function App() {
   const { theme } = useContext(ThemeContext);
 
-  const isAuth = () => {
-    const token = localStorage.getItem('current-user-token');
-    return !!token;
-  };
-
   return (
     <div className="App" data-theme={theme}>
       <div className="switchMode">
@@ -36,7 +31,7 @@ function App() {
             <Route
               path="/chatlist"
               element={
-                <ProtectedRoute isAuthenticated={() => isAuth()} redirectTo="/">
+                <ProtectedRoute>
                   <Home />
                 </ProtectedRoute>
               }
