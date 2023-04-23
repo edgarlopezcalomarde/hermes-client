@@ -1,10 +1,20 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaLocationArrow } from 'react-icons/fa';
 import './SendSection.css';
+import { GrFormUpload } from 'react-icons/gr';
+
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import CREATE_MESSAGE from '../../graphql/mutations/CREATE_MESSAGE';
+import { convertToBase64 } from '../../utils/helpers';
+import {
+  BtnChooseFile,
+  ImagePreviewBox,
+  Preview,
+  SendSectionLayout,
+} from './SendSectionStyle';
 
 function SendSection() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
@@ -14,6 +24,8 @@ function SendSection() {
   )[0];
 
   const [message, setMessage] = useState('');
+  const [imagePreview, setImagePreview] = useState<any>(null);
+
   const [createMessage] = useMutation(CREATE_MESSAGE, {
     refetchQueries: [
       {
@@ -32,26 +44,52 @@ function SendSection() {
         text: message,
         receiver: reciver.id,
         sender: currentUser.id,
+        image: imagePreview,
       },
     });
     setMessage('');
   };
 
-  return (
-    <div className="sendSection">
-      <input
-        type="text"
-        placeholder="Escribe un mensaje......"
-        className="inputMessage"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+  const handleSearchImage = async (e: any) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImagePreview(base64);
+  };
 
-      {/* Implementar un menu de reacciones rollo un emoji menu */}
-      <button className="btnSend" onClick={handleSend} type="submit">
-        <FaLocationArrow />
-      </button>
-    </div>
+  return (
+    <SendSectionLayout>
+      <ImagePreviewBox>
+        {imagePreview && <Preview src={imagePreview} alt="preview" />}
+      </ImagePreviewBox>
+
+      <div className="sendSection">
+        <input
+          type="text"
+          placeholder="Escribe un mensaje......"
+          className="inputMessage"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+
+        <input
+          type="file"
+          name="myFile"
+          id="upload"
+          accept=".jpeg, .png, .jpg"
+          onChange={(e) => handleSearchImage(e)}
+          hidden
+        />
+
+        <BtnChooseFile htmlFor="upload">
+          <GrFormUpload />
+        </BtnChooseFile>
+
+        {/* Implementar un menu de reacciones rollo un emoji menu */}
+        <button className="btnSend" onClick={handleSend} type="submit">
+          <FaLocationArrow />
+        </button>
+      </div>
+    </SendSectionLayout>
   );
 }
 
