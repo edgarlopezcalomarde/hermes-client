@@ -5,6 +5,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import UPDATE_USER from '../../graphql/mutations/UPDATE_USER';
 import { FormInput } from '../../styledComponents/Input';
+import { convertToBase64 } from '../../utils/helpers';
 
 function Profile() {
   const [id, setId] = useState('');
@@ -15,19 +16,6 @@ function Profile() {
 
   const [updateUser, result] = useMutation(UPDATE_USER);
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
-
-  function convertToBase64(file: Blob) {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  }
 
   useEffect(() => {
     if (data) {

@@ -36,7 +36,11 @@ function Status() {
         {avatarImg === '' ? (
           <CgProfile onClick={() => navigate('/profile')} />
         ) : (
-          <AvatarImg src={avatarImg} alt="avatar" />
+          <AvatarImg
+            onClick={() => navigate('/profile')}
+            src={avatarImg}
+            alt="avatar"
+          />
         )}
 
         {data && data.getCurrentUser.username}
