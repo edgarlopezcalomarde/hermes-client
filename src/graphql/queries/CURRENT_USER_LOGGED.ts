@@ -9,6 +9,8 @@ const CURRENT_USER_LOGGED = gql`
       }
       id
       username
+      name
+      avatarImg
       friendRequest {
         id
         to {

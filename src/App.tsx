@@ -13,6 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ThemeContext } from './contexts/DarkModeProvider';
 import AuthProvider from './contexts/AuthProvider';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -33,6 +34,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
                 </ProtectedRoute>
               }
             />

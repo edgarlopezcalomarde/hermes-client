@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import { RiLogoutBoxFill } from 'react-icons/ri';
-import './Status.css';
+import { CgProfile } from 'react-icons/cg';
 import { useApolloClient } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import StatusBox from './StatusStyles';
 
-interface IStatus {
-  status: string;
-}
-
-function Status({ status }: IStatus) {
+function Status() {
   const client = useApolloClient();
   const navigate = useNavigate();
 
@@ -23,10 +20,13 @@ function Status({ status }: IStatus) {
   };
 
   return (
-    <div className="status">
-      <h3>{status}</h3>
-      <RiLogoutBoxFill className="btnLogout" onClick={logout} />
-    </div>
+    <StatusBox>
+      <div>
+        <CgProfile onClick={() => navigate('/profile')} />
+      </div>
+
+      <RiLogoutBoxFill onClick={logout} />
+    </StatusBox>
   );
 }
 

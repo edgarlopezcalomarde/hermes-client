@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
+export const Input = styled.input`
   font-family: 'Montserrat', sans-serif;
   width: 100%;
 
@@ -11,13 +11,22 @@ const Input = styled.input`
 
   border: 0;
   border-radius: 4px;
-  /* outline: 2px solid #0068ff; */
 
-  background-color: #f4f6f9;
+  
 
   &:hover {
     background-color: #eaedf3;
   }
 `;
 
-export default Input;
+export const FormInput = styled.input`
+  padding: 14px;
+  border-radius: 10px;
+  outline: 0;
+  background-color: rgb(199, 199, 199);
+  border: 0;
+  color: black;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+`;

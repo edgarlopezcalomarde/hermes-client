@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import FIND_CHAT_BY_ID from '../../graphql/queries/FIND_CHAT_BY_ID';
-import Input from '../../styledComponents/Input';
+import { Input } from '../../styledComponents/Input';
 
 function FriendList({ openChat }: any) {
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);

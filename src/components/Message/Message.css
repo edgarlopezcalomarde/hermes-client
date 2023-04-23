@@ -30,6 +30,6 @@
 
 .message_left .message__bubble {
   border-top-left-radius: 0px;
-  background-color: #9a9a9a58;
+  background-color: var( --chat-bubble-left-background);
   color: black;
 }

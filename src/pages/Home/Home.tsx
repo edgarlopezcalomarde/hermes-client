@@ -23,8 +23,7 @@ function ChatList() {
   return (
     <HomePageLayout>
       <LeftPanel>
-        <Status status="online" />
-
+        <Status />
         <h2>Chats</h2>
         <FriendList openChat={openChat} />
       </LeftPanel>

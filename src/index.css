@@ -37,13 +37,17 @@
   --text-secondary: royalblue;
   --text-terciary: black;
 
+  --chat-bubble-left-background:#9a9a9a58;
+
   --accent: royalblue;
 }
+
 
 [data-theme='dark'] {
   --background: #282834;
   --background2: rgb(92, 92, 92);
-
+  --chat-bubble-left-background: #dacaf6;
+ 
   --text-primary: #ffffff;
   --text-secondary: grey;
   --text-terciary: black;
