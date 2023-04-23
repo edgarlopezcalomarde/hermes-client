@@ -6,6 +6,7 @@ const CURRENT_USER_LOGGED = gql`
       friends {
         id
         username
+        avatarImg
       }
       id
       username

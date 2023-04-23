@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StatusBox = styled.div`
+export const StatusBox = styled.div`
   border-bottom: #bbbdff 1px solid;
 
   display: flex;
@@ -12,4 +12,9 @@ const StatusBox = styled.div`
   font-weight: 700;
 `;
 
-export default StatusBox;
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: capitalize;
+`;

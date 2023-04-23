@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import FIND_CHAT_BY_ID from '../../graphql/queries/FIND_CHAT_BY_ID';
 import { Input } from '../../styledComponents/Input';
+import { AvatarImg } from '../../styledComponents/Img';
 
 function FriendList({ openChat }: any) {
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
@@ -37,6 +38,7 @@ function FriendList({ openChat }: any) {
       <div className="list">
         {friends &&
           friends.map((friend: any) => {
+            console.log(friend);
             return (
               <li key={friend.id} className="user">
                 <div
@@ -45,6 +47,12 @@ function FriendList({ openChat }: any) {
                   role="button"
                   tabIndex={0}
                 >
+                  <AvatarImg
+                    src={
+                      friend.avatarImg ? friend.avatarImg : 'assets/avatar.svg'
+                    }
+                    alt="avatar"
+                  />
                   {friend.username}
                 </div>
               </li>
