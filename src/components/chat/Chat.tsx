@@ -6,7 +6,7 @@ import SendSection from '../SendSection/SendSection';
 import { ChatBox, ConversationHeader } from './ChatStyle';
 
 function Chat() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
   const location = useLocation();
 
   const reciver = location.state.participants.filter(

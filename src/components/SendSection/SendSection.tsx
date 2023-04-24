@@ -17,7 +17,7 @@ import {
 } from './SendSectionStyle';
 
 function SendSection() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
   const location = useLocation();
   const reciver = location.state.participants.filter(
     (participant: any) => participant.id !== currentUser.id,
@@ -84,7 +84,6 @@ function SendSection() {
           <GrFormUpload />
         </BtnChooseFile>
 
-        {/* Implementar un menu de reacciones rollo un emoji menu */}
         <button className="btnSend" onClick={handleSend} type="submit">
           <FaLocationArrow />
         </button>

@@ -6,7 +6,7 @@ import './NetworkUsers.css';
 import SEND_FRIEND_REQUEST from '../../graphql/mutations/SEND_FRIEND_REQUEST';
 
 function NetworkUsers() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
 
   const { data, loading, error } = useQuery(ALL_USERS);
 

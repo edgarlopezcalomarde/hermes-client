@@ -13,12 +13,12 @@ import './index.css';
 import DarkModeProvider from './contexts/DarkModeProvider';
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('current-user-token');
+  const user = JSON.parse(localStorage.getItem('current-user')!);
 
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : null,
+      authorization: user ? `Bearer ${user.token}` : null,
     },
   };
 });

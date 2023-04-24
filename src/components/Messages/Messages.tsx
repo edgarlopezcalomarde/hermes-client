@@ -8,7 +8,7 @@ import './Messages.css';
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 
 function Messages() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
   const location = useLocation();
   const reciver = location.state.participants.filter(
     (participant: any) => participant.id !== currentUser.id,
@@ -41,6 +41,7 @@ function Messages() {
             key={message.id}
             text={message.text}
             isSender={message.sender === currentUser.id}
+            img={message.image}
           />
         ))}
     </div>

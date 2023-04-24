@@ -8,3 +8,10 @@ export const AvatarImg = styled.img`
   border-radius: 50px;
   object-fit: cover;
 `;
+
+export const MessageImg = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+`;

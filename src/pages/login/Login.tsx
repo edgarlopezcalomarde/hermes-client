@@ -1,9 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import './login.css';
-import LOG_IN from '../../graphql/mutations/LOG_IN';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useLocalStorage from '../../utils/useLocalStorage';
+import LOG_IN from '../../graphql/mutations/LOG_IN';
+import { Button, LoginLayout } from './LoginStyles';
+import {
+  FormInput,
+  FormLabel,
+  FormLayout,
+  Href,
+} from '../../styledComponents/Input';
+import { Logo } from '../Register/RegisterStyles';
 
 function Login() {
   const navigate = useNavigate();
@@ -12,43 +20,35 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [, setUser] = useLocalStorage('current-user', '');
 
-  const [login, result] = useMutation(LOG_IN, {
-    onError: (error) => {
-      setErrorMessage(error.graphQLErrors[0].message);
-    },
-  });
+  const [login] = useMutation(LOG_IN);
 
   useEffect(() => {
-    if (result.data) {
-      const { token } = result.data.login;
-      localStorage.setItem('current-user-token', token);
-      localStorage.setItem('currentUser', JSON.stringify(result.data.login));
-      navigate('/chatlist');
-    }
-
     if (isAuthenticated) {
       navigate('/chatlist');
     }
-  }, [result.data]);
+  }, []);
 
   const handleLogIn = async (e: any) => {
     e.preventDefault();
-    login({ variables: { username, password } });
-    setIsAuthenticated(true);
+    const { data } = await login({ variables: { username, password } });
+
+    if (data) {
+      setUser(data.login);
+      setIsAuthenticated(true);
+      navigate('/chatlist');
+    }
   };
 
   return (
-    <div className="login">
-      <div style={{ color: 'red' }}>{errorMessage}</div>
-
-      <form className="box" onSubmit={handleLogIn}>
-        <div className="logo">Hermes</div>
+    <LoginLayout>
+      <FormLayout onSubmit={handleLogIn}>
+        <Logo>Hermes</Logo>
 
         <div>
-          <p className="title">Username: </p>
-          <input
+          <FormLabel>Username: </FormLabel>
+          <FormInput
             type="text"
             value={username}
             onChange={({ target }) => setUsername(target.value)}
@@ -57,8 +57,8 @@ function Login() {
         </div>
 
         <div>
-          <p className="title">Password: </p>
-          <input
+          <FormLabel>Password: </FormLabel>
+          <FormInput
             type="text"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
@@ -66,12 +66,10 @@ function Login() {
           />
         </div>
 
-        <button className="btnLogin" type="submit">
-          Log In
-        </button>
-      </form>
+        <Button>Log In</Button>
+      </FormLayout>
 
-      <div
+      <Href
         role="button"
         onClick={() => navigate('/register')}
         onKeyDown={() => navigate('/register')}
@@ -79,8 +77,8 @@ function Login() {
         className="linkToRegister"
       >
         I don't have an account yet
-      </div>
-    </div>
+      </Href>
+    </LoginLayout>
   );
 }
 

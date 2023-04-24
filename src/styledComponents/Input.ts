@@ -12,11 +12,17 @@ export const Input = styled.input`
   border: 0;
   border-radius: 4px;
 
-  
-
   &:hover {
     background-color: #eaedf3;
   }
+`;
+
+export const FormLayout = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+  width: 420px;
 `;
 
 export const FormInput = styled.input`
@@ -29,4 +35,25 @@ export const FormInput = styled.input`
   width: 100%;
   font-size: 16px;
   font-weight: 500;
+`;
+
+export const FormLabel = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding-left: 0px;
+`;
+
+export const Href = styled.div`
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: underline;
+  color: var(--text-primary);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
 `;

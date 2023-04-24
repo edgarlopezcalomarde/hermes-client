@@ -9,7 +9,6 @@ import { AvatarImg } from '../../styledComponents/Img';
 import avatarDefault from '../../assets/profileNotFound.jpg';
 import { List, ListItem, ListItemBox } from './FriendListStyle';
 
-
 function FriendList({ openChat }: any) {
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
 

@@ -9,6 +9,7 @@ const ALL_MESSAGE_BETWEN_USERS = gql`
       receiver
       sender
       text
+      image
     }
   }
 `;
