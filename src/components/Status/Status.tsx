@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RiLogoutBoxFill } from 'react-icons/ri';
+import { IoMdSettings } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { StatusBox, UserInfo } from './StatusStyles';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
-import { AvatarImg, UserAvatarImg } from '../../styledComponents/Img';
+import { AvatarImg } from '../../styledComponents/Img';
+import avatarDefault from '../../assets/profileNotFound.jpg';
 
 function Status() {
   const client = useApolloClient();
@@ -33,20 +35,18 @@ function Status() {
   return (
     <StatusBox>
       <UserInfo>
-        {avatarImg === '' ? (
-          <CgProfile onClick={() => navigate('/profile')} />
-        ) : (
-          <AvatarImg
-            onClick={() => navigate('/profile')}
-            src={avatarImg}
-            alt="avatar"
-          />
-        )}
-
+        <AvatarImg
+          onClick={() => navigate('/profile')}
+          src={avatarImg || avatarDefault}
+          alt="avatar"
+        />
         {data && data.getCurrentUser.username}
       </UserInfo>
 
-      <RiLogoutBoxFill onClick={logout} />
+      <div>
+        <IoMdSettings onClick={() => navigate('/profile')} />
+        <RiLogoutBoxFill onClick={logout} />
+      </div>
     </StatusBox>
   );
 }

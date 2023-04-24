@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 
+import { useNavigate } from 'react-router-dom';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import UPDATE_USER from '../../graphql/mutations/UPDATE_USER';
-import { FormInput } from '../../styledComponents/Input';
+import { FormInput, FormLabel, FormLayout } from '../../styledComponents/Input';
 import { convertToBase64 } from '../../utils/helpers';
+import { BackButtonBox, ProfileLayout } from './ProfileStyles';
+import { Button } from '../Login/LoginStyles';
+import ToggleButton from '../../components/ToggleButton/ToggleButton';
 
 function Profile() {
   const [id, setId] = useState('');
@@ -14,8 +19,10 @@ function Profile() {
   const [avatarPreview, setAvatarPreview] = useState<any>('');
   const [avatar, setAvatar] = useState<any>(null);
 
-  const [updateUser, result] = useMutation(UPDATE_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -49,33 +56,50 @@ function Profile() {
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="file-upload-3">
-        <img src={avatarPreview} alt="" />
-      </label>
+    <ProfileLayout>
+      <div className="switchMode">
+        <ToggleButton />
+      </div>
 
-      <input
-        type="file"
-        name="myFile"
-        id="file-upload-3"
-        accept=".jpeg, .png, .jpg"
-        onChange={(e) => handleAvatarChange(e)}
-      />
+      <BackButtonBox>
+        <MdOutlineKeyboardBackspace onClick={() => navigate('/chatlist')} />
+      </BackButtonBox>
 
-      <FormInput
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <FormLayout onSubmit={handleSubmit}>
+        <label htmlFor="file-upload-3">
+          <img src={avatarPreview} alt="" />
+        </label>
 
-      <FormInput
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+        <input
+          type="file"
+          name="myFile"
+          id="file-upload-3"
+          accept=".jpeg, .png, .jpg"
+          onChange={(e) => handleAvatarChange(e)}
+          hidden
+        />
 
-      <button type="submit">Guardar Perfil</button>
-    </form>
+        <div>
+          <FormLabel> Username: </FormLabel>
+          <FormInput
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <FormLabel> Name: </FormLabel>
+
+          <FormInput
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <Button type="submit">Guardar Perfil</Button>
+      </FormLayout>
+    </ProfileLayout>
   );
 }
 

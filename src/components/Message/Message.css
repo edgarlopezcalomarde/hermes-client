@@ -16,10 +16,12 @@
 
 .message__bubble {
   max-width: calc(100% - 67px);
-  overflow-wrap: break-word;
-
-  padding: 10px 30px;
+  word-break:  break-all;
+  padding: 10px 20px;
   border-radius: 10px;
+
+  display: flex;
+  gap: 10px;
 }
 
 .message_right .message__bubble {
@@ -30,6 +32,12 @@
 
 .message_left .message__bubble {
   border-top-left-radius: 0px;
-  background-color: var( --chat-bubble-left-background);
+  background-color: var(--chat-bubble-left-background);
   color: black;
+}
+
+.message_time {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: auto;
 }

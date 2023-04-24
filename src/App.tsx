@@ -3,8 +3,6 @@ import React, { useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
-import ToggleButton from './components/ToggleButton/ToggleButton';
-
 import Register from './pages/Register/Register';
 import './index.css';
 import Login from './pages/Login/Login';
@@ -20,10 +18,6 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      <div className="switchMode">
-        <ToggleButton />
-      </div>
-
       <BrowserRouter>
         <AuthProvider>
           <Routes>

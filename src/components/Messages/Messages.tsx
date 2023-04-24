@@ -42,6 +42,7 @@ function Messages() {
             text={message.text}
             isSender={message.sender === currentUser.id}
             img={message.image}
+            timestamp={message.createdAt}
           />
         ))}
     </div>

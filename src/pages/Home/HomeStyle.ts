@@ -12,7 +12,6 @@ export const HomePageLayout = styled.div`
 export const LeftPanel = styled.div`
   flex: 0.4;
   padding: 10px;
-  margin-top: 60px;
   border: #bbbdff 1px solid;
   border-radius: 6px;
 `;

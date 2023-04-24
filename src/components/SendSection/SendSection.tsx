@@ -41,12 +41,13 @@ function SendSection() {
   const handleSend = () => {
     createMessage({
       variables: {
-        text: message,
+        text: message || '🖼',
         receiver: reciver.id,
         sender: currentUser.id,
         image: imagePreview,
       },
     });
+    setImagePreview('');
     setMessage('');
   };
 

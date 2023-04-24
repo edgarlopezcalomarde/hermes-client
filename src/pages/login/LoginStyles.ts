@@ -14,6 +14,7 @@ export const Button = styled.button`
   letter-spacing: 1px;
 
   color: white;
+  cursor: pointer;
 `;
 
 export const LoginLayout = styled.div`
