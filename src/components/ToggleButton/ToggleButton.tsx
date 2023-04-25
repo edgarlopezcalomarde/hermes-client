@@ -6,9 +6,6 @@ function ToggleButton() {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const handleClick = () => {
-    //  e.preventDefault(); //Aqui se actualiza no se por que
-    // No ponerle a la label el onclick porque  falla el contextp por el event que actualiza el componente y lo renderiza de nuevo
-    // setDarkMode(!isDarkMode);
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', `"${newTheme}"`);

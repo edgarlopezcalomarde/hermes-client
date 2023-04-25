@@ -38,6 +38,5 @@ export const BtnChooseFile = styled.label`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   outline: none;
   cursor: pointer;
-  color: white;
   font-family: 'Montserrat', sans-serif;
 `;

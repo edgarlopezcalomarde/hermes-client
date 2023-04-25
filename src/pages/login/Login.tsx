@@ -59,7 +59,7 @@ function Login() {
         <div>
           <FormLabel>Password: </FormLabel>
           <FormInput
-            type="text"
+            type="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
             className="input"
