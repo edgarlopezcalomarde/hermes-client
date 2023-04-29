@@ -3,8 +3,6 @@ import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaLocationArrow } from 'react-icons/fa';
-import './SendSection.css';
-import { GrFormUpload } from 'react-icons/gr';
 
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import CREATE_MESSAGE from '../../graphql/mutations/CREATE_MESSAGE';

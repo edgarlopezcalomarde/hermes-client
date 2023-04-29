@@ -1,12 +1,11 @@
 import React from 'react';
-import WelcomeLayout from './WelcomeStyle';
 
 function Welcome() {
   return (
-    <WelcomeLayout>
-      <h1>👋 Bienvenido a Hermes</h1>
-      <h2>Conecta, Conversa y Comparte </h2>
-    </WelcomeLayout>
+    <div className="flex flex-col justify-center items-center h-full">
+      <h1 className="text-3xl font-bold">👋 Bienvenido a Hermes</h1>
+      <h2 className="text-2xl font-semibold">Conecta, Conversa y Comparte </h2>
+    </div>
   );
 }
 

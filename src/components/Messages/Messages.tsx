@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 
-import './Messages.css';
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import Message from '../Message/Message';
 

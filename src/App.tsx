@@ -12,7 +12,6 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ThemeContext } from './contexts/DarkModeProvider';
 import AuthProvider from './contexts/AuthProvider';
 import Profile from './pages/Profile/Profile';
-import Search from './pages/Search/Search';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -40,15 +39,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Profile />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="/search"
-              element={
-                <ProtectedRoute>
-                  <Search />
                 </ProtectedRoute>
               }
             />

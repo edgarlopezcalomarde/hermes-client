@@ -7,7 +7,6 @@ import useLocalStorage from '../../utils/useLocalStorage';
 import ALL_USERS from '../../graphql/queries/ALL_USERS';
 import SEND_FRIEND_REQUEST from '../../graphql/mutations/SEND_FRIEND_REQUEST';
 
-
 function NetworkUserItem({ user }: any) {
   const [currentUser] = useLocalStorage('current-user', '');
 
@@ -35,7 +34,7 @@ function NetworkUserItem({ user }: any) {
   };
 
   return (
-    <ListItemBox>
+    <>
       {user.username}
       <div
         onClick={() => handleClick(user.id)}
@@ -45,7 +44,7 @@ function NetworkUserItem({ user }: any) {
       >
         {userRequest !== undefined ? userRequest.status : <RiAddFill />}
       </div>
-    </ListItemBox>
+    </>
   );
 }
 

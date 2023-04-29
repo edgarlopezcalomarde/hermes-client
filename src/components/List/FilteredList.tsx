@@ -5,6 +5,7 @@ function FilterableList({
   initialList,
   renderItem,
   filtermessage,
+  bigSize,
 }: any) {
   const [searchTerm, setSearchTerm] = useState('');
   const filteredList = initialList.filter((item: any) =>
@@ -52,7 +53,13 @@ function FilterableList({
         </span>
       </div>
 
-      <ul className="flex flex-col space-y-1 mt-4 -mx-2 h-52 overflow-y-auto pl-1">
+      <ul
+        className={
+          bigSize
+            ? 'flex flex-col space-y-1 mt-4 -mx-2 h-auto overflow-y-auto pl-1'
+            : 'flex flex-col space-y-1 mt-4 -mx-2 h-52 overflow-y-auto pl-1'
+        }
+      >
         {filteredList.map((item: any) => (
           <li key={item.id}>{renderItem(item)}</li>
         ))}

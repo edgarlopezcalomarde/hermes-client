@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -11,6 +11,8 @@ import FilterableList from '../../components/List/FilteredList';
 import FriendItem from '../../components/List/FriendItem';
 import FriendRequestItem from '../../components/List/FriendRequestItem';
 import useLocalStorage from '../../utils/useLocalStorage';
+import ALL_USERS from '../../graphql/queries/ALL_USERS';
+import NetworkUserItem from '../../components/List/NetworkUserItem';
 
 function ChatList() {
   const [currentUser] = useLocalStorage('current-user', '');
@@ -21,6 +23,8 @@ function ChatList() {
 
   const navigate = useNavigate();
   const currentUserQuery = useQuery(CURRENT_USER_LOGGED);
+  const allUsersQuery = useQuery(ALL_USERS);
+  const [networkUsers, setNetworkUsers] = useState([]);
 
   const openChat = (chat: any) => {
     setIsChat(true);
@@ -32,7 +36,21 @@ function ChatList() {
       setFriends(currentUserQuery.data.getCurrentUser.friends);
       setFriendRequests(currentUserQuery.data.getCurrentUser.friendRequest);
     }
-  }, [currentUserQuery.data, currentUser.id]);
+
+    if (currentUserQuery.error) {
+      localStorage.removeItem("isAuthenticated")
+      localStorage.removeItem("current-user");
+      navigate('/');
+    }
+
+    if (allUsersQuery.data) {
+      setNetworkUsers(
+        allUsersQuery.data.allUsers.filter(
+          (user: any) => user.id !== currentUser.id,
+        ),
+      );
+    }
+  }, [currentUserQuery.data, currentUser.id, allUsersQuery.data]);
 
   return (
     <div className="flex flex-row h-full w-full overflow-x-hidden">
@@ -67,6 +85,16 @@ function ChatList() {
         <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-slate-800 border border-quaternary h-full p-4">
           {isChat ? <Chat /> : <Welcome />}
         </div>
+      </div>
+
+      <div className="flex flex-col mt-5 mr-5 w-96 flex-shrink">
+        <FilterableList
+          listTitle="Users"
+          initialList={networkUsers}
+          renderItem={(user: any) => <NetworkUserItem user={user} />}
+          filtermessage="Busca en nuestra red...."
+          bigSize
+        />
       </div>
     </div>
   );
