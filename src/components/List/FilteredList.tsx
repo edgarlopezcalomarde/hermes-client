@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Input } from '../../styledComponents/Input';
-import { List, ListItem } from './ListStyles';
 
 function FilterableList({ listTitle, initialList, renderItem }: any) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,18 +11,25 @@ function FilterableList({ listTitle, initialList, renderItem }: any) {
 
   return (
     <div>
-      <h2>{listTitle}</h2>
       <Input
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-      <List>
+
+      <div className="flex flex-row items-center justify-between text-xs mt-4">
+        <span className="font-bold text-2xl">{listTitle}</span>
+        <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
+          {filteredList.length}
+        </span>
+      </div>
+
+      <ul className="flex flex-col space-y-1 mt-4 -mx-2 h-56 overflow-y-auto">
         {filteredList.map((item: any) => (
-          <ListItem key={item.id}>{renderItem(item)}</ListItem>
+          <li key={item.id}>{renderItem(item)}</li>
         ))}
-      </List>
+      </ul>
     </div>
   );
 }

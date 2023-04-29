@@ -1,13 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RiLogoutBoxFill } from 'react-icons/ri';
 import { IoMdSettings } from 'react-icons/io';
-import { CgProfile } from 'react-icons/cg';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-import { StatusBox, UserInfo } from './StatusStyles';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
-import { AvatarImg } from '../../styledComponents/Img';
 import avatarDefault from '../../assets/profileNotFound.jpg';
 
 function Status() {
@@ -33,21 +30,28 @@ function Status() {
   }, [data]);
 
   return (
-    <StatusBox>
-      <UserInfo>
-        <AvatarImg
-          onClick={() => navigate('/profile')}
+    <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg gap-2">
+      <div className="h-20 w-20 rounded-full border overflow-hidden">
+        <img
           src={avatarImg || avatarDefault}
           alt="avatar"
+          className="h-full w-full"
         />
-        {data && data.getCurrentUser.username}
-      </UserInfo>
-
-      <div>
-        <IoMdSettings onClick={() => navigate('/profile')} />
-        <RiLogoutBoxFill onClick={logout} />
       </div>
-    </StatusBox>
+
+      <div className="text-2xl font-semibold capitalize">
+        {data && data.getCurrentUser.username}
+      </div>
+
+      <div className="flex flex-row items-center mt-3 gap-4 text-3xl">
+        <RiLogoutBoxFill onClick={logout} className="cursor-pointer" />
+        <div className="text-2xl cursor-pointer">🔎</div>
+        <IoMdSettings
+          onClick={() => navigate('/profile')}
+          className="cursor-pointer"
+        />
+      </div>
+    </div>
   );
 }
 

@@ -17,7 +17,7 @@ function App() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className="App" data-theme={theme}>
+    <div className={theme === 'dark' ? 'bg-darki' : ''}>
       <BrowserRouter>
         <AuthProvider>
           <Routes>

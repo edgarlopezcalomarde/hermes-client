@@ -34,5 +34,6 @@
         "react/no-unescaped-entities": ["off"],
         "quotes":["error", "single"],
         "prettier/prettier": ["error", { "singleQuote": true }]
-    }
+    },
+    "ignorePatterns": ["tailwind.config.js", "postcss.config.js"]
 }

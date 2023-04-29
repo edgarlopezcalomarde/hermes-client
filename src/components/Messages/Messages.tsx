@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
-import Message from '../Message/Message';
 
 import './Messages.css';
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
+import Message from '../Message/Message';
 
 function Messages() {
   const currentUser = JSON.parse(localStorage.getItem('current-user')!);
@@ -34,7 +34,7 @@ function Messages() {
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <div className="messages" ref={containerRef}>
+    <div className="grid grid-cols-12 gap-y-2" ref={containerRef}>
       {data &&
         data.allMessages.map((message: any) => (
           <Message

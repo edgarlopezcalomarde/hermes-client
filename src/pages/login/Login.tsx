@@ -45,7 +45,9 @@ function Login() {
     <LoginLayout>
       <FormLayout onSubmit={handleLogIn}>
         <Logo>Hermes</Logo>
-
+<p class="text-3xl font-bold underline">
+    Hello world!
+  </p>
         <div>
           <FormLabel>Username: </FormLabel>
           <FormInput

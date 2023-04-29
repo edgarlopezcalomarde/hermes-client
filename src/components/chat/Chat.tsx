@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Messages from '../Messages/Messages';
 import SendSection from '../SendSection/SendSection';
 
-import { ChatBox, ConversationHeader } from './ChatStyle';
+import { ConversationHeader } from './ChatStyle';
 
 function Chat() {
   const currentUser = JSON.parse(localStorage.getItem('current-user')!);
@@ -14,14 +14,16 @@ function Chat() {
   )[0];
 
   return (
-    <ChatBox>
-      <ConversationHeader>
-        <h6>{reciver.username}</h6>
-      </ConversationHeader>
+    <div className="flex flex-col h-full overflow-x-auto mb-4">
+      <div className="flex flex-col h-full">
+        <ConversationHeader>
+          <h6>{reciver.username}</h6>
+        </ConversationHeader>
 
-      <Messages />
-      <SendSection />
-    </ChatBox>
+        <Messages />
+        <SendSection />
+      </div>
+    </div>
   );
 }
 

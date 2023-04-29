@@ -34,10 +34,14 @@ function FriendRequestItem({ friendrequest }: any) {
   };
 
   return (
-    <ListItemBox>
-      <div>{friendrequest.from.username}</div>
-
-      <div>{friendrequest.status}</div>
+    <button
+      type="submit"
+      className="flex flex-row items-centerrounded-xl w-full gap-4 p-1"
+    >
+      <div className="ml-2 text-sm font-semibold">
+        {friendrequest.from.username}
+      </div>
+      <div className=" text-sm font-semibold">{friendrequest.status}</div>
 
       <div
         onClick={() => handleClickAccept(friendrequest.id)}
@@ -56,7 +60,7 @@ function FriendRequestItem({ friendrequest }: any) {
       >
         <ImCancelCircle />
       </div>
-    </ListItemBox>
+    </button>
   );
 }
 
