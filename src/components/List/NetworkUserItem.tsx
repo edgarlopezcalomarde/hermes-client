@@ -34,17 +34,22 @@ function NetworkUserItem({ user }: any) {
   };
 
   return (
-    <>
+    <div className="flex justify-between items-center p-2 border rounded ">
       {user.username}
       <div
         onClick={() => handleClick(user.id)}
         onKeyDown={() => handleClick(user.id)}
         role="button"
         tabIndex={0}
+        className="font-medium"
       >
-        {userRequest !== undefined ? userRequest.status : <RiAddFill />}
+        {userRequest !== undefined ? (
+          userRequest.status
+        ) : (
+          <RiAddFill className="text-2xl" />
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

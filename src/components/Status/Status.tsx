@@ -54,16 +54,6 @@ function Status() {
 
         <div
           className="text-2xl cursor-pointer"
-          onClick={() => navigate('/search')}
-          onKeyUp={() => navigate('/search')}
-          role="button"
-          tabIndex={0}
-        >
-          🔎
-        </div>
-
-        <div
-          className="text-2xl cursor-pointer"
           onClick={() => navigate('/profile')}
           onKeyUp={() => navigate('/profile')}
           role="button"

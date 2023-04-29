@@ -38,9 +38,10 @@
 [data-theme='light'] {
 
   --theme-primary: #ffffff;
-  --theme-secondary: rgb(158, 158, 158);
+  --theme-secondary: rgb(243 244 246);
+  --theme-tertiary: rgb(243 244 246);
   --theme-theme-quaternary: rgb(75 85 99);
-  --theme-tertiary: #dacaf6;
+
   --text-base: black;
   --accent: #3b82f6;
   --accent-secondary: #2563eb;
@@ -48,10 +49,11 @@
 
 
 [data-theme='dark'] {
+
   --theme-primary: #0f172a;
   --theme-primary-selected: #0f172a;
   --theme-secondary: rgb(55 65 81);
-  --theme-theme-quaternary: rgb(75 85 99);
+  --theme-theme-quaternary: #4b5563;
   --theme-tertiary: #475569;
   --text-base: white;
   --accent: #3b82f6;

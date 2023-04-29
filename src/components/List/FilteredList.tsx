@@ -25,17 +25,12 @@ function FilterableList({
             type="search"
             id="default-search"
             className="block w-full p-2 pl-10 text-sm 
-          text-gray-900 border 
-          border-gray-300 rounded-lg
-          bg-gray-50 
+          text-text-base border 
           focus:ring-blue-500 
           focus:border-blue-500 
           bg-secondary
+          rounded
           border-quaternary
-          dark:placeholder-gray-400 
-          dark:text-white 
-          dark:focus:ring-blue-500 
-          dark:focus:border-blue-500 
           outline-none"
             placeholder={filtermessage}
             value={searchTerm}

@@ -7,7 +7,6 @@ import { ImCancelCircle } from 'react-icons/im';
 
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import ACEEPT_FRIEND_REQUEST from '../../graphql/mutations/ACEEPT_FRIEND_REQUEST';
-import { ListItemBox } from './ListStyles';
 
 function FriendRequestItem({ friendrequest }: any) {
   const [acceptFriendRequest] = useMutation(ACEEPT_FRIEND_REQUEST, {
@@ -20,6 +19,8 @@ function FriendRequestItem({ friendrequest }: any) {
       console.log(errore);
     },
   });
+
+  console.log(friendrequest);
 
   const handleClickAccept = (id: string) => {
     acceptFriendRequest({

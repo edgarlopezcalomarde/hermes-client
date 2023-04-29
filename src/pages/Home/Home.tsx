@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -38,8 +38,8 @@ function ChatList() {
     }
 
     if (currentUserQuery.error) {
-      localStorage.removeItem("isAuthenticated")
-      localStorage.removeItem("current-user");
+      localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('current-user');
       navigate('/');
     }
 
@@ -73,7 +73,9 @@ function ChatList() {
 
           <FilterableList
             listTitle="Friend Requests"
-            initialList={friendRequests}
+            initialList={friendRequests.filter(
+              (fr: any) => fr.status !== 'accepted',
+            )}
             renderItem={(frReq: any) => (
               <FriendRequestItem friendrequest={frReq} />
             )}

@@ -1,8 +1,11 @@
 import React from 'react';
-import NotFoundLayout from './NotFoundPageStyle';
 
 function NotFoundPage() {
-  return <NotFoundLayout>404</NotFoundLayout>;
+  return (
+    <div className="flex flex-row h-full w-full justify-center items-center font-medium text-4xl">
+      404
+    </div>
+  );
 }
 
 export default NotFoundPage;
