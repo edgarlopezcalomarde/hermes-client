@@ -15,7 +15,7 @@ function Chat() {
 
   return (
     <>
-      <div className="w-full  p-4 border-b-2">
+      <div className="w-full p-4 border-b-2">
         <h6 className="text-3xl font-semibold capitalize">
           {reciver.username}
         </h6>
