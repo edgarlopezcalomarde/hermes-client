@@ -12,12 +12,16 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ThemeContext } from './contexts/DarkModeProvider';
 import AuthProvider from './contexts/AuthProvider';
 import Profile from './pages/Profile/Profile';
+import Search from './pages/Search/Search';
 
 function App() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={theme === 'dark' ? 'bg-darki' : ''}>
+    <div
+      className="bg-primary flex h-screen antialiased text-text-base"
+      data-theme={theme}
+    >
       <BrowserRouter>
         <AuthProvider>
           <Routes>
@@ -39,6 +43,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route
+              path="/search"
+              element={
+                <ProtectedRoute>
+                  <Search />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AuthProvider>

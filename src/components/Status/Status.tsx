@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { RiLogoutBoxFill } from 'react-icons/ri';
-import { IoMdSettings } from 'react-icons/io';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -30,8 +28,8 @@ function Status() {
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg gap-1">
-      <div className="h-20 w-20 rounded-full border overflow-hidden">
+    <div className="flex flex-col items-center bg-tertiary border  mt-4 w-full py-6 px-4 rounded-lg gap-1 text-text-base">
+      <div className="h-20 w-20 rounded-full border border-tertiary overflow-hidden">
         <img
           src={avatarImg || avatarDefault}
           alt="avatar"
@@ -44,12 +42,35 @@ function Status() {
       </div>
 
       <div className="flex flex-row items-center mt-3 gap-4 text-3xl">
-        <RiLogoutBoxFill onClick={logout} className="cursor-pointer" />
-        <div className="text-2xl cursor-pointer">🔎</div>
-        <IoMdSettings
+        <div
+          className="text-2xl cursor-pointer"
+          onClick={logout}
+          onKeyUp={logout}
+          role="button"
+          tabIndex={0}
+        >
+          🚪
+        </div>
+
+        <div
+          className="text-2xl cursor-pointer"
+          onClick={() => navigate('/search')}
+          onKeyUp={() => navigate('/search')}
+          role="button"
+          tabIndex={0}
+        >
+          🔎
+        </div>
+
+        <div
+          className="text-2xl cursor-pointer"
           onClick={() => navigate('/profile')}
-          className="cursor-pointer"
-        />
+          onKeyUp={() => navigate('/profile')}
+          role="button"
+          tabIndex={0}
+        >
+          ⚙
+        </div>
       </div>
     </div>
   );

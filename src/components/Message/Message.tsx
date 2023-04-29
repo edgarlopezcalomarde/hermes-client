@@ -10,7 +10,7 @@ interface IMessage {
 }
 
 function Message({ text, isSender, img, timestamp }: IMessage) {
-  const [, hora, minutos, type] = dateFormat(timestamp);
+  const [, hora, minutos] = dateFormat(timestamp);
 
   return (
     <div
@@ -27,20 +27,27 @@ function Message({ text, isSender, img, timestamp }: IMessage) {
             : 'flex flex-row items-center'
         }
       >
-        <div className="rounded-tl-none relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
-          <div className="break-all">
-            {text !== '🖼' ? text : ''}
-            {img && <MessageImg src={img} alt="" />}
-          </div>
-
-          <div
-            className={
-              isSender
-                ? 'absolute text-xs bottom-0 right-1 -mb-5 mr-2 text-gray-500 w-14'
-                : 'absolute text-xs bottom-0 left-0 -mb-5 ml-2 text-gray-500 w-32'
-            }
-          >
-            {hora}:{minutos} {type}
+        <div
+          className={
+            isSender
+              ? 'rounded-br-none relative ml-3 text-base py-2 px-4 shadow rounded-xl bg-accent'
+              : 'rounded-tl-none relative ml-3 text-base py-2 px-4 shadow rounded-xl bg-accent-secondary'
+          }
+        >
+          <div className="flex gap-2">
+            <div className="break-all">
+              {text !== '🖼' ? text : ''}
+              {img && <MessageImg src={img} alt="" />}
+            </div>
+            <div
+              className={
+                isSender
+                  ? 'text-left text-xs mt-auto'
+                  : 'text-left text-xs mt-auto'
+              }
+            >
+              {hora}:{minutos}
+            </div>
           </div>
         </div>
       </div>

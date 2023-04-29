@@ -52,7 +52,7 @@ function SendSection() {
   };
 
   return (
-    <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4 mt-auto  ">
+    <div className="flex flex-row items-center h-16 rounded-xl bg-tertiary w-full px-4 mt-auto  ">
       {/* <ImagePreviewBox>
           {imagePreview && <Preview src={imagePreview} alt="preview" />}
         </ImagePreviewBox> */}
@@ -67,23 +67,34 @@ function SendSection() {
       />
 
       <label
-        className="flex items-center justify-center text-gray-400 hover:text-gray-600 text-2xl cursor-pointer"
+        className="flex items-center justify-center  hover:text-gray-600 text-2xl cursor-pointer"
         htmlFor="upload"
       >
-        <GrFormUpload />
+        🔗
       </label>
 
       <div className="flex-grow ml-4">
         <div className="relative w-full">
           <input
             type="text"
-            className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+            className="flex w-full border rounded-md  pl-4 h-9 text-gray-900 border 
+            border-gray-300 rounded-lg
+            bg-gray-50 
+            focus:ring-blue-500 
+            focus:border-blue-500 
+            bg-secondary
+            border-quaternary
+            dark:placeholder-gray-400 
+            dark:text-white 
+            dark:focus:ring-blue-500 
+            dark:focus:border-blue-500 
+            outline-none"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
           <button
             type="button"
-            className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600"
+            className="absolute flex items-center justify-center h-full w-12 right-0 top-0"
           >
             🥴
           </button>
@@ -92,7 +103,7 @@ function SendSection() {
 
       <div className="ml-4">
         <button
-          className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
+          className="flex items-center justify-center bg-accent hover:bg-accent-secondary rounded-md text-text-base gap-2 px-4 py-1 flex-shrink-0 h-9"
           onClick={handleSend}
           type="submit"
         >

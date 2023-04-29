@@ -6,7 +6,7 @@ import useLocalStorage from '../../utils/useLocalStorage';
 
 import ALL_USERS from '../../graphql/queries/ALL_USERS';
 import SEND_FRIEND_REQUEST from '../../graphql/mutations/SEND_FRIEND_REQUEST';
-import { ListItemBox } from './ListStyles';
+
 
 function NetworkUserItem({ user }: any) {
   const [currentUser] = useLocalStorage('current-user', '');

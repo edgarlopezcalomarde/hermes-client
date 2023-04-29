@@ -21,7 +21,7 @@ function FriendItem({ user, openChat }: any) {
   return (
     <button
       type="submit"
-      className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2 w-full"
+      className="flex flex-row items-center hover:bg-secondary rounded-xl p-2 w-full  "
       onClick={() => handleChat(user)}
       onKeyDown={() => handleChat(user)}
     >

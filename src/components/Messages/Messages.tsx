@@ -39,7 +39,7 @@ function Messages() {
       ref={containerRef}
     >
       <div className="flex flex-col h-full">
-        <div className="grid grid-cols-12 gap-y-2">
+        <div className="grid grid-cols-12 ">
           {data &&
             data.allMessages.map((message: any) => (
               <Message
