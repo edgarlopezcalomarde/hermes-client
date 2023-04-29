@@ -53,6 +53,7 @@ function ChatList() {
           <div className="flex flex-row items-center justify-center h-12 w-full">
             <div className="font-bold text-2xl">Hermes</div>
           </div>
+
           <Status />
 
           <div className="flex flex-col mt-8">
@@ -79,14 +80,14 @@ function ChatList() {
             {isChat ? <Chat /> : <Welcome />}
           </div>
         </div>
-
+        {/* 
         <RightPanel>
           <FilterableList
             listTitle="Network Users"
             initialList={networkUsers}
             renderItem={(user: any) => <NetworkUserItem user={user} />}
           />
-        </RightPanel>
+        </RightPanel> */}
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Input } from '../../styledComponents/Input';
 
 function FilterableList({ listTitle, initialList, renderItem }: any) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,7 +10,7 @@ function FilterableList({ listTitle, initialList, renderItem }: any) {
 
   return (
     <div>
-      <Input
+      <input
         type="text"
         placeholder="Search"
         value={searchTerm}
@@ -25,7 +24,7 @@ function FilterableList({ listTitle, initialList, renderItem }: any) {
         </span>
       </div>
 
-      <ul className="flex flex-col space-y-1 mt-4 -mx-2 h-56 overflow-y-auto">
+      <ul className="flex flex-col space-y-1 mt-4 -mx-2 h-52 overflow-y-auto">
         {filteredList.map((item: any) => (
           <li key={item.id}>{renderItem(item)}</li>
         ))}

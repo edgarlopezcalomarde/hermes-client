@@ -30,7 +30,7 @@ function Status() {
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg gap-2">
+    <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg gap-1">
       <div className="h-20 w-20 rounded-full border overflow-hidden">
         <img
           src={avatarImg || avatarDefault}

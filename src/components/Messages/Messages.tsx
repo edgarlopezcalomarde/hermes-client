@@ -34,17 +34,24 @@ function Messages() {
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <div className="grid grid-cols-12 gap-y-2" ref={containerRef}>
-      {data &&
-        data.allMessages.map((message: any) => (
-          <Message
-            key={message.id}
-            text={message.text}
-            isSender={message.sender === currentUser.id}
-            img={message.image}
-            timestamp={message.createdAt}
-          />
-        ))}
+    <div
+      className="flex flex-col h-full overflow-x-auto mb-4"
+      ref={containerRef}
+    >
+      <div className="flex flex-col h-full">
+        <div className="grid grid-cols-12 gap-y-2">
+          {data &&
+            data.allMessages.map((message: any) => (
+              <Message
+                key={message.id}
+                text={message.text}
+                isSender={message.sender === currentUser.id}
+                img={message.image}
+                timestamp={message.createdAt}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 }
