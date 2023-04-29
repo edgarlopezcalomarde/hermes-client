@@ -6,10 +6,7 @@ import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import UPDATE_USER from '../../graphql/mutations/UPDATE_USER';
-import { FormInput, FormLabel, FormLayout } from '../../styledComponents/Input';
 import { convertToBase64 } from '../../utils/helpers';
-import { BackButtonBox, ProfileLayout } from './ProfileStyles';
-import { Button } from '../Login/LoginStyles';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 
 function Profile() {
@@ -56,16 +53,19 @@ function Profile() {
   if (error) return <div>`Error! ${error.message}`</div>;
 
   return (
-    <ProfileLayout>
+    <form
+      className="flex h-full w-full justify-center items-center"
+      onSubmit={handleSubmit}
+    >
       <div className="switchMode">
         <ToggleButton />
       </div>
 
-      <BackButtonBox>
+      <div className="absolute top-6 left-6 text-5xl">
         <MdOutlineKeyboardBackspace onClick={() => navigate('/chatlist')} />
-      </BackButtonBox>
+      </div>
 
-      <FormLayout onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-1 mb-6 w-96">
         <label htmlFor="file-upload-3">
           <img src={avatarPreview} alt="" />
         </label>
@@ -79,27 +79,44 @@ function Profile() {
           hidden
         />
 
-        <div>
-          <FormLabel> Username: </FormLabel>
-          <FormInput
+        <div className="mb-6">
+          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Username
+          </p>
+          <input
             type="text"
+            id="username"
+            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+            placeholder="pedrito"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={({ target }) => setUsername(target.value)}
+            required
           />
         </div>
-        <div>
-          <FormLabel> Name: </FormLabel>
 
-          <FormInput
+        <div className="mb-6">
+          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Name
+          </p>
+          <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            id="name"
+            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+            placeholder="pedrito"
+            value={username}
+            onChange={({ target }) => setUsername(target.value)}
+            required
           />
         </div>
 
-        <Button type="submit">Guardar Perfil</Button>
-      </FormLayout>
-    </ProfileLayout>
+        <button
+          type="submit"
+          className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+        >
+          Save Profile
+        </button>
+      </div>
+    </form>
   );
 }
 

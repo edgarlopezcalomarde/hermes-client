@@ -1,5 +1,4 @@
 import React from 'react';
-import { MessageImg } from '../../styledComponents/Img';
 import { dateFormat } from '../../utils/helpers';
 
 interface IMessage {
@@ -37,7 +36,7 @@ function Message({ text, isSender, img, timestamp }: IMessage) {
           <div className="flex gap-2">
             <div className="break-all">
               {text !== '🖼' ? text : ''}
-              {img && <MessageImg src={img} alt="" />}
+              {img && <img src={img} alt="" className="h-48" />}
             </div>
             <div
               className={

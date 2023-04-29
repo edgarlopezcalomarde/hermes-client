@@ -4,14 +4,6 @@ import { useMutation } from '@apollo/client';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useLocalStorage from '../../utils/useLocalStorage';
 import LOG_IN from '../../graphql/mutations/LOG_IN';
-import { Button, LoginLayout } from './LoginStyles';
-import {
-  FormInput,
-  FormLabel,
-  FormLayout,
-  Href,
-} from '../../styledComponents/Input';
-import { Logo } from '../Register/RegisterStyles';
 
 function Login() {
   const navigate = useNavigate();
@@ -42,43 +34,59 @@ function Login() {
   };
 
   return (
-    <LoginLayout>
-      <FormLayout onSubmit={handleLogIn}>
-        <Logo>Hermes</Logo>
+    <form
+      className="flex h-full w-full justify-center items-center"
+      onSubmit={handleLogIn}
+    >
+      <div className="flex flex-col gap-1 mb-6 w-96">
+        <h1 className="text-center mb-10 text-6xl font-bold ">Hermes</h1>
 
-        <div>
-          <FormLabel>Username: </FormLabel>
-          <FormInput
+        <div className="mb-6">
+          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Username
+          </p>
+          <input
             type="text"
+            id="email"
+            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+            placeholder="pedrito"
             value={username}
             onChange={({ target }) => setUsername(target.value)}
-            className="input"
+            required
           />
         </div>
 
-        <div>
-          <FormLabel>Password: </FormLabel>
-          <FormInput
+        <div className="mb-6">
+          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Password
+          </p>
+          <input
             type="password"
+            id="password"
+            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
+            placeholder="•••••••••"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            className="input"
+            required
           />
         </div>
 
-        <Button>Log In</Button>
-      </FormLayout>
+        <button
+          type="submit"
+          className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+        >
+          Sign In
+        </button>
 
-      <Href
-        role="button"
-        onClick={() => navigate('/register')}
-        onKeyDown={() => navigate('/register')}
-        tabIndex={0}
-        className="linkToRegister"
-      >
-        I don't have an account yet
-      </Href>
-    </LoginLayout>
+        <button
+          type="button"
+          onClick={() => navigate('/register')}
+          className="flex justify-center items-center text-sm font-medium"
+        >
+          I don't have an account yet
+        </button>
+      </div>
+    </form>
   );
 }
 
