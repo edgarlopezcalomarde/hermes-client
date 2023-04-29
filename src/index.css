@@ -36,21 +36,30 @@
 }
 
 [data-theme='light'] {
-
   --theme-primary: #ffffff;
+
+  --input-bg-primary:rgb(243 244 246);
+  --input-border-primary: rgb(209 213 219);
+  --input-placeholder-primary: rgb(209 213 219);
+
   --theme-secondary: rgb(243 244 246);
   --theme-tertiary: rgb(243 244 246);
   --theme-theme-quaternary: rgb(75 85 99);
 
-  --text-base: black;
+  --text-base: rgb(17 24 39);
   --accent: #3b82f6;
   --accent-secondary: #2563eb;
 }
 
 
 [data-theme='dark'] {
-
   --theme-primary: #0f172a;
+
+  --input-bg-primary:rgb(55 65 81);
+  --input-border-primary: rgb(75 85 99);
+  --input-placeholder-primary: rgb(209 213 219);
+
+
   --theme-primary-selected: #0f172a;
   --theme-secondary: rgb(55 65 81);
   --theme-theme-quaternary: #4b5563;

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 
 import CREATE_USER from '../../graphql/mutations/CREATE_USER';
+import Input from '../../components/Input/Input';
 
 function Register() {
   const [, setErrorMessage] = useState('');
@@ -59,50 +60,35 @@ function Register() {
       <div className="flex flex-col gap-1 mb-6 w-96">
         <h1 className="text-center mb-10 text-6xl font-bold ">Hermes</h1>
 
-        <div className="mb-6">
-          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Username
-          </p>
-          <input
-            type="text"
-            id="email"
-            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
-            placeholder="pedrito"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-            required
-          />
-        </div>
+        <Input
+          id="username"
+          label="Username"
+          onChange={({ target }) => setUsername(target.value)}
+          placeholder="pedrito"
+          type="text"
+          value={username}
+          required
+        />
 
-        <div className="mb-6">
-          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Password
-          </p>
-          <input
-            type="password"
-            id="password"
-            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
-            placeholder="•••••••••"
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-            required
-          />
-        </div>
+        <Input
+          id="password"
+          label="Password"
+          onChange={({ target }) => setPassword(target.value)}
+          placeholder="•••••••••"
+          type="password"
+          value={password}
+          required
+        />
 
-        <div className="mb-6">
-          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Confirm password
-          </p>
-          <input
-            type="password"
-            id="confirm_password"
-            className=" border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
-            placeholder="•••••••••"
-            value={repeatPassword}
-            onChange={({ target }) => setRepeatPassword(target.value)}
-            required
-          />
-        </div>
+        <Input
+          id="confirmpassword"
+          label="Confirm Password"
+          onChange={({ target }) => setRepeatPassword(target.value)}
+          placeholder="•••••••••"
+          type="password"
+          value={repeatPassword}
+          required
+        />
 
         <div className="flex items-start mb-6">
           <div className="flex items-center h-5">
@@ -117,7 +103,7 @@ function Register() {
           </div>
           <label
             htmlFor="remember"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="ml-2 text-sm font-medium text-text-base"
           >
             I agree with the{' '}
             <a

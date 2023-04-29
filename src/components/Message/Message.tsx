@@ -1,14 +1,14 @@
 import React from 'react';
 import { dateFormat } from '../../utils/helpers';
 
-interface IMessage {
+interface ICMessage {
   text: string;
   isSender: boolean;
   img: string;
   timestamp: string;
 }
 
-function Message({ text, isSender, img, timestamp }: IMessage) {
+function Message({ text, isSender, img, timestamp }: ICMessage) {
   const [, hora, minutos] = dateFormat(timestamp);
 
   return (

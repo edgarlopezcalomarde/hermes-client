@@ -11,6 +11,9 @@ export default {
         'text-base': 'var(--text-base)',
         accent: 'var(--accent)',
        'accent-secondary': 'var(--accent-secondary)',
+
+       'inpt-primary':'var(--input-bg-primary)',
+       'inpt-bord-primary':'var(--input-border-primary)',
       },
 
 

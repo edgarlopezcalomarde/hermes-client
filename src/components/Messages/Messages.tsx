@@ -1,22 +1,23 @@
 import React, { useEffect, useRef } from 'react';
-
-import { useLocation } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 
-import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
+import ALL_MESSAGE_BETWEN_USERS, {
+  IAllMessages,
+} from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import Message from '../Message/Message';
+import { IMessage } from '../../models/message';
+import { IUser } from '../../models/user';
 
-function Messages() {
-  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
-  const location = useLocation();
-  const reciver = location.state.participants.filter(
-    (participant: any) => participant.id !== currentUser.id,
-  )[0];
-  const [allMessages, { data, error, loading }] = useLazyQuery(
+interface ICMessages {
+  currentUser: IUser;
+  reciver: IUser;
+}
+
+function Messages({ currentUser, reciver }: ICMessages) {
+  const [allMessages, { data, error, loading }] = useLazyQuery<IAllMessages>(
     ALL_MESSAGE_BETWEN_USERS,
   );
 
-  // Scrollea al final del div
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function Messages() {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [data, reciver]);
+  }, [allMessages, currentUser.id, data, reciver]);
 
   if (loading) return <div>loading......</div>;
   if (error) return <div>`Error! ${error.message}`</div>;
@@ -40,7 +41,7 @@ function Messages() {
       <div className="flex flex-col h-full">
         <div className="grid grid-cols-12 ">
           {data &&
-            data.allMessages.map((message: any) => (
+            data.allMessages.map((message: IMessage) => (
               <Message
                 key={message.id}
                 text={message.text}

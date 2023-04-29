@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from '../Input/Input';
 
 function FilterableList({
   listTitle,
@@ -16,29 +17,16 @@ function FilterableList({
 
   return (
     <div className="mt-1">
-      {filtermessage ? (
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            🔍
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full p-2 pl-10 text-sm 
-          text-text-base border 
-          focus:ring-blue-500 
-          focus:border-blue-500 
-          bg-secondary
-          rounded
-          border-quaternary
-          outline-none"
-            placeholder={filtermessage}
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-          />
-        </div>
-      ) : (
-        ''
+      {filtermessage && (
+        <Input
+          id="buscarcontactos"
+          label="buscar"
+          onChange={({ target }) => setSearchTerm(target.value)}
+          placeholder={filtermessage}
+          type="search"
+          value={searchTerm}
+          required
+        />
       )}
 
       <div className="flex flex-row items-center justify-between text-xs mt-3">

@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { IMessage } from '../../models/message';
 
 const ALL_MESSAGE_BETWEN_USERS = gql`
   query AllMessages($userId1: String, $userId2: String) {
@@ -13,5 +14,9 @@ const ALL_MESSAGE_BETWEN_USERS = gql`
     }
   }
 `;
+
+export interface IAllMessages {
+  allMessages: [IMessage];
+}
 
 export default ALL_MESSAGE_BETWEN_USERS;

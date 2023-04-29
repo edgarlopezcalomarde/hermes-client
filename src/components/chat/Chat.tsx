@@ -2,9 +2,11 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Messages from '../Messages/Messages';
 import SendSection from '../SendSection/SendSection';
+import useLocalStorage from '../../utils/useLocalStorage';
 
 function Chat() {
-  const currentUser = JSON.parse(localStorage.getItem('current-user')!);
+  const [currentUser] = useLocalStorage('current-user', '');
+
   const location = useLocation();
 
   const reciver = location.state.participants.filter(
@@ -18,7 +20,7 @@ function Chat() {
           {reciver.username}
         </h6>
       </div>
-      <Messages />
+      <Messages currentUser={currentUser} reciver={reciver} />
       <SendSection />
     </>
   );

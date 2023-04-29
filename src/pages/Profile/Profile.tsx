@@ -8,6 +8,7 @@ import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import UPDATE_USER from '../../graphql/mutations/UPDATE_USER';
 import { convertToBase64 } from '../../utils/helpers';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
+import Input from '../../components/Input/Input';
 
 function Profile() {
   const [id, setId] = useState('');
@@ -79,35 +80,25 @@ function Profile() {
           hidden
         />
 
-        <div className="mb-6">
-          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Username
-          </p>
-          <input
-            type="text"
-            id="username"
-            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
-            placeholder="pedrito"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-            required
-          />
-        </div>
+        <Input
+          id="username"
+          label="Username"
+          onChange={({ target }) => setUsername(target.value)}
+          placeholder="pedrito777"
+          type="text"
+          value={username}
+          required
+        />
 
-        <div className="mb-6">
-          <p className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Name
-          </p>
-          <input
-            type="text"
-            id="name"
-            className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none"
-            placeholder="pedrito"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-            required
-          />
-        </div>
+        <Input
+          id="name"
+          label="Name"
+          onChange={({ target }) => setName(target.value)}
+          placeholder="pedro"
+          type="text"
+          value={name}
+          required
+        />
 
         <button
           type="submit"
