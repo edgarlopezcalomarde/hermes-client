@@ -93,7 +93,9 @@ function ChatList() {
         <FilterableList
           listTitle="Users"
           initialList={networkUsers}
-          renderItem={(user: any) => <NetworkUserItem user={user} />}
+          renderItem={(user: any) => (
+            <NetworkUserItem user={user} friends={friends} />
+          )}
           filtermessage="Busca en nuestra red...."
           bigSize
         />

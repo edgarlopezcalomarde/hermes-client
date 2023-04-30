@@ -5,6 +5,8 @@ import { BiLogIn } from 'react-icons/bi';
 
 import CREATE_USER from '../../graphql/mutations/CREATE_USER';
 import Input from '../../components/Input/Input';
+import Modal from '../../components/Modal/Modal';
+import TermsOUse from '../../utils/termOfUse';
 
 function Register() {
   const [, setErrorMessage] = useState('');
@@ -19,6 +21,8 @@ function Register() {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -54,7 +58,7 @@ function Register() {
 
   return (
     <form
-      className="flex h-full w-full justify-center items-center"
+      className="flex h-full w-full justify-center items-center p-4"
       onSubmit={handleRegister}
     >
       <div className="flex flex-col gap-1 mb-6 w-96">
@@ -106,12 +110,15 @@ function Register() {
             className="ml-2 text-sm font-medium text-text-base"
           >
             I agree with the{' '}
-            <a
-              href="/termsandconditions"
+            <span
               className="text-blue-600 hover:underline dark:text-blue-500"
+              onClick={() => setOpen(true)}
+              onKeyUp={() => setOpen(true)}
+              role="button"
+              tabIndex={0}
             >
               terms and conditions
-            </a>
+            </span>
             .
           </label>
         </div>
@@ -126,11 +133,18 @@ function Register() {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="flex justify-center items-center text-sm font-medium"
+          className="flex justify-center items-center text-sm font-medium mt-4"
         >
           I already have an account <BiLogIn className="logInIcon" />
         </button>
       </div>
+      <Modal
+        title="Terms of Service"
+        visible={open}
+        onClose={() => setOpen(false)}
+      >
+        <TermsOUse />
+      </Modal>
     </form>
   );
 }

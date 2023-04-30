@@ -36,7 +36,7 @@ function Login() {
 
   return (
     <form
-      className="flex h-full w-full justify-center items-center"
+      className="flex h-full w-full justify-center items-center p-4"
       onSubmit={handleLogIn}
     >
       <div className="flex flex-col gap-1 mb-6 w-96">
@@ -72,7 +72,7 @@ function Login() {
         <button
           type="button"
           onClick={() => navigate('/register')}
-          className="flex justify-center items-center text-sm font-medium"
+          className="flex justify-center items-center text-sm font-medium mt-4"
         >
           I don't have an account yet
         </button>

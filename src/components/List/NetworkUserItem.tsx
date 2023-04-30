@@ -7,7 +7,7 @@ import useLocalStorage from '../../utils/useLocalStorage';
 import ALL_USERS from '../../graphql/queries/ALL_USERS';
 import SEND_FRIEND_REQUEST from '../../graphql/mutations/SEND_FRIEND_REQUEST';
 
-function NetworkUserItem({ user }: any) {
+function NetworkUserItem({ user, friends }: any) {
   const [currentUser] = useLocalStorage('current-user', '');
 
   const [sendFriendRequest] = useMutation(SEND_FRIEND_REQUEST, {
@@ -33,7 +33,18 @@ function NetworkUserItem({ user }: any) {
     }
   };
 
-  console.log('friendRequest', user);
+  const isFriend = () => {
+    let userStatus = '';
+    if (userRequest !== undefined) {
+      userStatus = userRequest.status;
+    } else if (
+      friends.filter((friend: any) => friend.id === user.id).length > 0
+    ) {
+      userStatus = 'accepted';
+    }
+
+    return userStatus;
+  };
 
   return (
     <div className="flex justify-between items-center p-2 border rounded ">
@@ -45,11 +56,7 @@ function NetworkUserItem({ user }: any) {
         tabIndex={0}
         className="font-medium"
       >
-        {userRequest !== undefined ? (
-          userRequest.status
-        ) : (
-          <RiAddFill className="text-2xl" />
-        )}
+        {isFriend() !== '' ? isFriend() : <RiAddFill className="text-2xl" />}
       </div>
     </div>
   );
