@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Messages from '../Messages/Messages';
 import SendSection from '../SendSection/SendSection';
 import useLocalStorage from '../../utils/useLocalStorage';
+import MessagesTres from '../Messages/MessagesTres';
 
 function Chat() {
   const [currentUser] = useLocalStorage('current-user', '');
@@ -20,7 +20,10 @@ function Chat() {
           {reciver.username}
         </h6>
       </div>
-      <Messages currentUser={currentUser} reciver={reciver} />
+      {/* <Messages currentUser={currentUser} reciver={reciver} /> */}
+      {/* <MessagesDoS currentUser={currentUser} reciver={reciver} /> */}
+      <MessagesTres currentUser={currentUser} reciver={reciver} />
+
       <SendSection />
     </>
   );

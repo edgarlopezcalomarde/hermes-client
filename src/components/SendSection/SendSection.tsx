@@ -7,6 +7,7 @@ import { FaLocationArrow } from 'react-icons/fa';
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import CREATE_MESSAGE from '../../graphql/mutations/CREATE_MESSAGE';
 import { convertToBase64 } from '../../utils/helpers';
+import Modal from '../Modal/Modal';
 
 function SendSection() {
   const currentUser = JSON.parse(localStorage.getItem('current-user')!);
@@ -30,6 +31,8 @@ function SendSection() {
     },
   });
 
+  const [open, setOpen] = useState(false);
+
   const handleSend = () => {
     createMessage({
       variables: {
@@ -47,13 +50,18 @@ function SendSection() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setImagePreview(base64);
+    setOpen(true);
   };
 
   return (
     <div className="flex flex-row items-center h-16 rounded-xl bg-tertiary w-full px-4 mt-auto  ">
-      {/* <ImagePreviewBox>
-          {imagePreview && <Preview src={imagePreview} alt="preview" />}
-        </ImagePreviewBox> */}
+      <Modal title="Preview" onClose={() => setOpen(false)} visible={open}>
+        {imagePreview && (
+          <div className="flex justify-center">
+            <img src={imagePreview} alt="preview" className="h-40 rounded" />
+          </div>
+        )}
+      </Modal>
 
       <input
         type="file"
@@ -70,6 +78,14 @@ function SendSection() {
       >
         🔗
       </label>
+
+      <button
+        type="button"
+        className="text-2xl cursor-pointer"
+        onClick={() => setOpen(true)}
+      >
+        🖼
+      </button>
 
       <div className="flex-grow ml-4">
         <div className="relative w-full">

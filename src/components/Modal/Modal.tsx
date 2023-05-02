@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 
 interface ModalProps {
   title: string;
@@ -8,11 +8,25 @@ interface ModalProps {
 }
 
 function Modal({ title, children, onClose, visible }: ModalProps) {
+  useEffect(() => {
+    const handleKeyUp = (event: any) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
   return (
     <div
       className={
         visible
-          ? 'fixed z-50 flex justify-center items-center w-full h-full p-4 overflow-y-auto'
+          ? 'fixed z-50 top-0 left-0 flex justify-center items-center w-full h-full p-4 overflow-y-auto'
           : 'hidden'
       }
     >
