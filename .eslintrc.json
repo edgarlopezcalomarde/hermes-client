@@ -30,10 +30,11 @@
     "rules": {
         "react/react-in-jsx-scope": ["off"],
         "react/jsx-uses-react": ["off"],
-        "react/jsx-props-no-spreading": ["warn"],
+        "react/jsx-props-no-spreading": ["off"],
         "react/no-unescaped-entities": ["off"],
         "quotes":["error", "single"],
-        "prettier/prettier": ["error", { "singleQuote": true }]
+        "prettier/prettier": ["error", { "singleQuote": true }],
+        "import/prefer-default-export":0
     },
     "ignorePatterns": ["tailwind.config.js", "postcss.config.js", "jest.config.js"]
 }

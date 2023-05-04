@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, ReactNode } from 'react';
+import classNames from 'classnames';
 
 interface InputProps {
   label: ReactNode;
@@ -37,11 +38,10 @@ function Input({
       <input
         type={type}
         id={id}
-        className={
-          type === 'search'
-            ? 'border text-sm rounded-lg block w-full p-2.5 pl-10 bg-inpt-primary border-inpt-bord-primary placeholder-gray-400 text-text-base focus:ring-blue-500 focus:border-blue-500 outline-none'
-            : 'border text-sm rounded-lg block w-full p-2.5  bg-inpt-primary border-inpt-bord-primary placeholder-gray-400 text-text-base focus:ring-blue-500 focus:border-blue-500 outline-none'
-        }
+        className={classNames(
+          'border text-sm rounded-lg block w-full p-2.5  bg-inpt-primary border-inpt-bord-primary placeholder-gray-400 text-text-base focus:ring-blue-500 focus:border-blue-500 outline-none',
+          { 'pl-10': type === 'search' },
+        )}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
