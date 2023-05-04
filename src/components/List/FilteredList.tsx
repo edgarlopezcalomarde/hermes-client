@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import Input from '../Input/Input';
 
 function FilterableList({
@@ -37,11 +38,10 @@ function FilterableList({
       </div>
 
       <ul
-        className={
-          bigSize
-            ? 'flex flex-col space-y-1 mt-4 -mx-2 h-auto overflow-y-auto pl-1'
-            : 'flex flex-col space-y-1 mt-4 -mx-2 h-52 overflow-y-auto pl-1'
-        }
+        className={classNames(
+          'flex flex-col space-y-1 mt-4 -mx-2 overflow-y-auto pl-1 h-auto',
+          { 'h-52': bigSize },
+        )}
       >
         {filteredList.map((item: any) => (
           <li key={item.id}>{renderItem(item)}</li>

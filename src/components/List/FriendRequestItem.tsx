@@ -20,8 +20,6 @@ function FriendRequestItem({ friendrequest }: any) {
     },
   });
 
-  console.log(friendrequest);
-
   const handleClickAccept = (id: string) => {
     acceptFriendRequest({
       variables: {
