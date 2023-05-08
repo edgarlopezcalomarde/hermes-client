@@ -8,7 +8,7 @@ interface ICMessage {
   timestamp: string;
 }
 
-function Message({ text, isSender, img, timestamp }: ICMessage) {
+function MessageItem({ text, isSender, img, timestamp }: ICMessage) {
   const [, hora, minutos] = dateFormat(timestamp);
 
   return (
@@ -54,4 +54,4 @@ function Message({ text, isSender, img, timestamp }: ICMessage) {
   );
 }
 
-export default Message;
+export default MessageItem;

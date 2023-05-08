@@ -4,7 +4,7 @@ import { useQuery, useSubscription } from '@apollo/client';
 import ALL_MESSAGE_BETWEN_USERS, {
   IAllMessages,
 } from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
-import Message from '../Message/Message';
+import MessageItem from '../MessageItem/MessageItem';
 import { IMessage } from '../../models/message';
 import { IUser } from '../../models/user';
 import NEW_MESSAGE from '../../graphql/subscriptions/NEW_MESSAGE';
@@ -14,7 +14,7 @@ interface ICMessages {
   reciver: IUser;
 }
 
-function MessagesCuatro({ currentUser, reciver }: ICMessages) {
+function MessagesList({ currentUser, reciver }: ICMessages) {
   const { data, error, loading } = useQuery<IAllMessages>(
     ALL_MESSAGE_BETWEN_USERS,
     {
@@ -27,6 +27,7 @@ function MessagesCuatro({ currentUser, reciver }: ICMessages) {
   const { data: subscriptionData } = useSubscription(NEW_MESSAGE);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setMessages(data?.allMessages || []);
   }, [data?.allMessages]);
@@ -57,7 +58,7 @@ function MessagesCuatro({ currentUser, reciver }: ICMessages) {
       <div className="flex flex-col h-full">
         <div className="grid grid-cols-12 ">
           {messages.map((message: IMessage) => (
-            <Message
+            <MessageItem
               key={message.id}
               text={message.text}
               isSender={message.sender === currentUser.id}
@@ -71,4 +72,4 @@ function MessagesCuatro({ currentUser, reciver }: ICMessages) {
   );
 }
 
-export default MessagesCuatro;
+export default MessagesList;
