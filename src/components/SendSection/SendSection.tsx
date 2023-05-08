@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { FaLocationArrow } from 'react-icons/fa';
 
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
-import CREATE_MESSAGE from '../../graphql/mutations/CREATE_MESSAGE';
+import NEW_MESSAGE from '../../graphql/mutations/NEW_MESSAGE';
 import { convertToBase64 } from '../../utils/helpers';
 import Modal from '../Modal/Modal';
 
@@ -19,7 +19,7 @@ function SendSection() {
   const [message, setMessage] = useState('');
   const [imagePreview, setImagePreview] = useState<any>(null);
 
-  const [createMessage] = useMutation(CREATE_MESSAGE, {
+  const [newMessage] = useMutation(NEW_MESSAGE, {
     refetchQueries: [
       {
         query: ALL_MESSAGE_BETWEN_USERS,
@@ -34,7 +34,7 @@ function SendSection() {
   const [open, setOpen] = useState(false);
 
   const handleSend = () => {
-    createMessage({
+    newMessage({
       variables: {
         text: message || '🖼',
         receiver: reciver.id,

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useRef, useState } from 'react';
+import { useQuery, useSubscription } from '@apollo/client';
 
 import ALL_MESSAGE_BETWEN_USERS, {
   IAllMessages,
@@ -7,28 +7,44 @@ import ALL_MESSAGE_BETWEN_USERS, {
 import Message from '../Message/Message';
 import { IMessage } from '../../models/message';
 import { IUser } from '../../models/user';
+import NEW_MESSAGE from '../../graphql/subscriptions/NEW_MESSAGE';
 
 interface ICMessages {
   currentUser: IUser;
   reciver: IUser;
 }
 
-function MessagesTres({ currentUser, reciver }: ICMessages) {
+function MessagesCuatro({ currentUser, reciver }: ICMessages) {
   const { data, error, loading } = useQuery<IAllMessages>(
     ALL_MESSAGE_BETWEN_USERS,
     {
       variables: { userId1: currentUser.id, userId2: reciver.id },
-      pollInterval: 1000,
     },
   );
 
+  const [messages, setMessages] = useState<IMessage[]>([]);
+
+  const { data: subscriptionData } = useSubscription(NEW_MESSAGE);
+
   const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setMessages(data?.allMessages || []);
+  }, [data?.allMessages]);
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [data?.allMessages]);
+  }, [messages]);
+
+  useEffect(() => {
+    if (subscriptionData && subscriptionData.newChatMessage) {
+      setMessages((prevMessages: any) => [
+        ...prevMessages,
+        subscriptionData.newChatMessage,
+      ]);
+    }
+  }, [subscriptionData]);
 
   if (loading) return <div>loading......</div>;
   if (error) return <div>`Error! ${error.message}`</div>;
@@ -40,7 +56,7 @@ function MessagesTres({ currentUser, reciver }: ICMessages) {
     >
       <div className="flex flex-col h-full">
         <div className="grid grid-cols-12 ">
-          {data?.allMessages.map((message: IMessage) => (
+          {messages.map((message: IMessage) => (
             <Message
               key={message.id}
               text={message.text}
@@ -55,4 +71,4 @@ function MessagesTres({ currentUser, reciver }: ICMessages) {
   );
 }
 
-export default MessagesTres;
+export default MessagesCuatro;

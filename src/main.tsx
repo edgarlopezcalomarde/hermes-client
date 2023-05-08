@@ -7,7 +7,11 @@ import {
   ApolloProvider,
   InMemoryCache,
   createHttpLink,
+  split,
 } from '@apollo/client';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { WebSocketLink } from '@apollo/client/link/ws';
+
 import App from './App';
 import './index.css';
 import DarkModeProvider from './contexts/DarkModeProvider';
@@ -27,10 +31,35 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:4000',
 });
 
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/graphql',
+  options: {
+    reconnect: true,
+    connectionParams: () => {
+      const user = JSON.parse(localStorage.getItem('current-user')!);
+      return {
+        authorization: user ? `Bearer ${user.token}` : null,
+      };
+    },
+  },
+});
+
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
+  },
+  wsLink,
+  ApolloLink.from([authLink, httpLink]),
+);
+
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: ApolloLink.from([authLink, httpLink]),
+  link: splitLink,
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

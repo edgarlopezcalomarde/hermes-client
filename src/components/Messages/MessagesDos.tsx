@@ -7,7 +7,7 @@ import ALL_MESSAGE_BETWEN_USERS, {
 import Message from '../Message/Message';
 import { IMessage } from '../../models/message';
 import { IUser } from '../../models/user';
-import NEW_CHAT_MESSAGE_SUBSCRIPTION from '../../graphql/subscriptions/NEW_CHAT_MESSAGE_SUBSCRIPTION';
+import NEW_CHAT_MESSAGE_SUBSCRIPTION from '../../graphql/subscriptions/NEW_MESSAGE';
 
 interface ICMessages {
   currentUser: IUser;

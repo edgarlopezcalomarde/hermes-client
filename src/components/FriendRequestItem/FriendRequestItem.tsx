@@ -7,9 +7,21 @@ import { ImCancelCircle } from 'react-icons/im';
 
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import ACEEPT_FRIEND_REQUEST from '../../graphql/mutations/ACEEPT_FRIEND_REQUEST';
+import DECLINE_FRIEND_REQUEST from '../../graphql/mutations/DECLINE_FRIEND_REQUEST';
 
 function FriendRequestItem({ friendrequest }: any) {
   const [acceptFriendRequest] = useMutation(ACEEPT_FRIEND_REQUEST, {
+    refetchQueries: [
+      {
+        query: CURRENT_USER_LOGGED,
+      },
+    ],
+    onError: (errore: any) => {
+      console.log(errore);
+    },
+  });
+
+  const [rejectFriendRequest] = useMutation(DECLINE_FRIEND_REQUEST, {
     refetchQueries: [
       {
         query: CURRENT_USER_LOGGED,
@@ -29,7 +41,11 @@ function FriendRequestItem({ friendrequest }: any) {
   };
 
   const handleClickDecline = (id: string) => {
-    console.log(id);
+    rejectFriendRequest({
+      variables: {
+        requestId: id,
+      },
+    });
   };
 
   return (

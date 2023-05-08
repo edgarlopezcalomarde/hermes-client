@@ -7,12 +7,12 @@ import Welcome from '../../components/Welcome/Welcome';
 
 import Status from '../../components/Status/Status';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
-import FilterableList from '../../components/List/FilteredList';
-import FriendItem from '../../components/List/FriendItem';
-import FriendRequestItem from '../../components/List/FriendRequestItem';
+import FilterableList from '../../components/FilteredList/FilteredList';
+import FriendItem from '../../components/FriendItem/FriendItem';
+import FriendRequestItem from '../../components/FriendRequestItem/FriendRequestItem';
 import useLocalStorage from '../../utils/useLocalStorage';
 import ALL_USERS from '../../graphql/queries/ALL_USERS';
-import NetworkUserItem from '../../components/List/NetworkUserItem';
+import NetworkUserItem from '../../components/NetworkUserItem/NetworkUserItem';
 
 function ChatList() {
   const [currentUser] = useLocalStorage('current-user', '');
@@ -30,6 +30,14 @@ function ChatList() {
     setIsChat(true);
     navigate('/chatlist', { state: { ...chat } });
   };
+
+  useEffect(() => {
+    if (currentUserQuery.error) {
+      localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('current-user');
+      navigate('/');
+    }
+  }, [currentUserQuery.error, navigate]);
 
   useEffect(() => {
     if (currentUserQuery.data) {

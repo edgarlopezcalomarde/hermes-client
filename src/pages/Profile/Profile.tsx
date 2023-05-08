@@ -10,6 +10,8 @@ import { convertToBase64 } from '../../utils/helpers';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Input from '../../components/Input/Input';
 
+import defaultProfile from '../../assets/profileNotFound.jpg';
+
 function Profile() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
@@ -68,7 +70,7 @@ function Profile() {
 
       <div className="flex flex-col gap-1 mb-6 w-96">
         <label htmlFor="file-upload-3">
-          <img src={avatarPreview} alt="" />
+          <img src={avatarPreview || defaultProfile} alt="" />
         </label>
 
         <input
@@ -105,6 +107,13 @@ function Profile() {
           className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
         >
           Save Profile
+        </button>
+
+        <button
+          type="submit"
+          className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-blue-800 mt-4"
+        >
+          Delete Account
         </button>
       </div>
     </form>

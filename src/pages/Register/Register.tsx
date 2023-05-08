@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 
-import CREATE_USER from '../../graphql/mutations/CREATE_USER';
+import REGISTER from '../../graphql/mutations/REGISTER';
 import Input from '../../components/Input/Input';
 import Modal from '../../components/Modal/Modal';
 import TermsOUse from '../../utils/termOfUse';
@@ -11,7 +11,7 @@ import TermsOUse from '../../utils/termOfUse';
 function Register() {
   const [, setErrorMessage] = useState('');
 
-  const [createUser] = useMutation(CREATE_USER, {
+  const [register] = useMutation(REGISTER, {
     onError: (error) => {
       setErrorMessage(error.graphQLErrors[0].message);
     },
@@ -42,7 +42,7 @@ function Register() {
         throw new Error('You must fill, all the fields');
       }
 
-      const { data } = await createUser({
+      const { data } = await register({
         variables: { username, name: '', password },
       });
 

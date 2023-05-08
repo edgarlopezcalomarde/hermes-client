@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import SendSection from '../SendSection/SendSection';
 import useLocalStorage from '../../utils/useLocalStorage';
-import MessagesTres from '../Messages/MessagesTres';
+import MessagesCuatro from '../Messages/MessagesCuatro';
 
 function Chat() {
   const [currentUser] = useLocalStorage('current-user', '');
@@ -22,7 +22,9 @@ function Chat() {
       </div>
       {/* <Messages currentUser={currentUser} reciver={reciver} /> */}
       {/* <MessagesDoS currentUser={currentUser} reciver={reciver} /> */}
-      <MessagesTres currentUser={currentUser} reciver={reciver} />
+      {/* <MessagesTres currentUser={currentUser} reciver={reciver} /> */}
+
+      <MessagesCuatro currentUser={currentUser} reciver={reciver} />
 
       <SendSection />
     </>

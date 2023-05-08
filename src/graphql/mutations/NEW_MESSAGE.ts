@@ -1,13 +1,13 @@
 import { gql } from '@apollo/client';
 
-const CREATE_MESSAGE = gql`
+const NEW_MESSAGE = gql`
   mutation Mutation(
     $text: String
     $receiver: String
     $sender: String
     $image: String
   ) {
-    createMessage(
+    newMessage(
       text: $text
       receiver: $receiver
       sender: $sender
@@ -24,4 +24,4 @@ const CREATE_MESSAGE = gql`
   }
 `;
 
-export default CREATE_MESSAGE;
+export default NEW_MESSAGE;

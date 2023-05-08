@@ -1,21 +1,21 @@
 import { gql } from '@apollo/client';
 import { IMessage } from '../../models/message';
 
-const NEW_CHAT_MESSAGE_SUBSCRIPTION = gql`
-  subscription NewChatMessageSubscription {
+const NEW_MESSAGE = gql`
+  subscription Subscription {
     newChatMessage {
-      createdAt
+      text
       id
+      image
       read
       receiver
       sender
-      text
-      image
+      createdAt
     }
   }
 `;
 
-export default NEW_CHAT_MESSAGE_SUBSCRIPTION;
+export default NEW_MESSAGE;
 
 export interface INewChatMessageSubscription {
   newChatMessage: [IMessage];
