@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { useTranslation } from 'react-i18next';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useLocalStorage from '../../utils/useLocalStorage';
 import LOG_IN from '../../graphql/mutations/LOG_IN';
@@ -16,6 +17,8 @@ function Login() {
   const [, setUser] = useLocalStorage('current-user', '');
 
   const [login] = useMutation(LOG_IN);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -44,7 +47,7 @@ function Login() {
 
         <Input
           id="username"
-          label="Username"
+          label={t('username')}
           onChange={({ target }) => setUsername(target.value)}
           placeholder="pedrito"
           type="text"
@@ -54,7 +57,7 @@ function Login() {
 
         <Input
           id="password"
-          label="Password"
+          label={t('password')}
           onChange={({ target }) => setPassword(target.value)}
           placeholder="•••••••••"
           type="password"
@@ -66,7 +69,7 @@ function Login() {
           type="submit"
           className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
         >
-          Sign In
+          {t('singin')}
         </button>
 
         <button
@@ -74,7 +77,7 @@ function Login() {
           onClick={() => navigate('/register')}
           className="flex justify-center items-center text-sm font-medium mt-4"
         >
-          I don't have an account yet
+          {t('nothaveaccount')}
         </button>
       </div>
     </form>

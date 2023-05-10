@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 interface AlertProps {
-  type: 'danger' | 'warning' | 'success' | 'info';
+  type: string;
   message: string;
 }
 
@@ -15,7 +15,7 @@ function Alert({ type, message }: AlertProps) {
   });
 
   return (
-    <div className={alertClass}>
+    <div className={alertClass} data-testid="alert">
       <span>
         {type} : {message}
       </span>

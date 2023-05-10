@@ -11,10 +11,11 @@ import {
 } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 import App from './App';
 import './index.css';
-import DarkModeProvider from './contexts/DarkModeProvider';
 
 const authLink = setContext((_, { headers }) => {
   const user = JSON.parse(localStorage.getItem('current-user')!);
@@ -64,10 +65,10 @@ const client = new ApolloClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <DarkModeProvider>
+    <I18nextProvider i18n={i18n}>
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>
-    </DarkModeProvider>
+    </I18nextProvider>
   </React.StrictMode>,
 );

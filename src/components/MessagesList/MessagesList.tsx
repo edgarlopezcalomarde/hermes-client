@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useQuery, useSubscription } from '@apollo/client';
 
+import { useTranslation } from 'react-i18next';
 import ALL_MESSAGE_BETWEN_USERS, {
   IAllMessages,
 } from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
@@ -47,8 +48,16 @@ function MessagesList({ currentUser, reciver }: ICMessages) {
     }
   }, [subscriptionData]);
 
-  if (loading) return <div>loading......</div>;
-  if (error) return <div>`Error! ${error.message}`</div>;
+  const { t } = useTranslation();
+
+  if (loading) return <div>{t('loading')}</div>;
+  if (error)
+    return (
+      <div>
+        {t('error')}
+        {error.message}
+      </div>
+    );
 
   return (
     <div

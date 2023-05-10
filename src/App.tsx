@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -9,18 +9,12 @@ import Login from './pages/Login/Login';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import { ThemeContext } from './contexts/DarkModeProvider';
 import AuthProvider from './contexts/AuthProvider';
 import Profile from './pages/Profile/Profile';
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <div
-      className="bg-primary flex h-screen antialiased text-text-base"
-      data-theme={theme}
-    >
+    <div className="bg-primary flex h-screen antialiased text-text-base">
       <BrowserRouter>
         <AuthProvider>
           <Routes>

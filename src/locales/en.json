@@ -1,0 +1,39 @@
+{
+    "username": "Username",
+    "password": "Password",
+
+    "singin":"Sign In",
+    "register":"Register",
+    
+    "repeatpassword":"Confirm Password",
+    "haveaccount": "I already have an account",
+    "nothaveaccount": "I don't have an account yet",
+
+    "agree": "I agree with the",
+    "terms": "terms and conditions",
+
+
+    "ltfriends":"Friends",
+    "fmfriends":"Filter contacts",
+    
+    "ltfriendrequest":"Friend Requests",
+
+    "ltnetworkusers":"Users",
+    "nufriends":"Search our network....",
+
+    "welcome":"Welcome to hermes",
+    "motto": "Connect, Talk and Share",
+
+
+    "saveprofile": "Save Profile",
+    "name": "Name",
+    "selectlanguage": "Select Language:",
+
+    "loading": "Loading...",
+    "error": "Error! ",
+
+
+    "send": "Send"
+
+
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+import { useTranslation } from 'react-i18next';
 import Chat from '../../components/Chat/Chat';
 import Welcome from '../../components/Welcome/Welcome';
 
@@ -60,6 +61,8 @@ function ChatList() {
     }
   }, [currentUserQuery.data, currentUser.id, allUsersQuery.data]);
 
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-row h-full w-full overflow-x-hidden">
       <div className="flex flex-col py-8 pl-6 pr-2 w-64  flex-shrink-0">
@@ -71,16 +74,16 @@ function ChatList() {
 
         <div className="flex flex-col mt-8">
           <FilterableList
-            listTitle="Chats"
+            listTitle={t('ltfriends')}
             initialList={friends}
             renderItem={(user: any) => (
               <FriendItem user={user} openChat={openChat} />
             )}
-            filtermessage="Filter contacts"
+            filtermessage={t('fmfriends')}
           />
 
           <FilterableList
-            listTitle="Friend Requests"
+            listTitle={t('ltfriendrequest')}
             initialList={friendRequests.filter(
               (fr: any) => fr.status !== 'accepted',
             )}
@@ -93,18 +96,22 @@ function ChatList() {
 
       <div className="flex flex-col flex-auto h-full p-6">
         <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-slate-800 border border-quaternary h-full p-4">
-          {isChat ? <Chat /> : <Welcome />}
+          {isChat ? (
+            <Chat />
+          ) : (
+            <Welcome motto={t('motto')} welcometext={t('welcome')} />
+          )}
         </div>
       </div>
 
       <div className="flex flex-col mt-5 mr-5 w-96 flex-shrink">
         <FilterableList
-          listTitle="Users"
+          listTitle={t('ltnetworkusers')}
           initialList={networkUsers}
           renderItem={(user: any) => (
             <NetworkUserItem user={user} friends={friends} />
           )}
-          filtermessage="Busca en nuestra red...."
+          filtermessage={t('nufriends')}
           bigSize
         />
       </div>

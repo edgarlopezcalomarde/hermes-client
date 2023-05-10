@@ -1,0 +1,35 @@
+{
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    
+    "singin":"Iniciar sesión",
+    "register":"Registrarse",
+    
+    "repeatpassword":"Confirmar contraseña",
+    "haveaccount": "Ya tengo una cuenta",
+    "nothaveaccount": "Todavía no tengo una cuenta",
+    
+    "agree": "Acepto los",
+    "terms": "términos y condiciones",
+    
+    "ltfriends":"Amigos",
+    "fmfriends":"Filtrar contactos",
+    
+    "ltfriendrequest":"Solicitudes de amistad",
+    
+    "ltnetworkusers":"Usuarios",
+    "nufriends":"Buscar en nuestra red...",
+    
+    "welcome":"Bienvenido a Hermes",
+    "motto": "Conecta, Conversa y Comparte",
+    
+    "saveprofile": "Guardar perfil",
+    "name": "Nombre",
+    "selectlanguage": "Seleccionar idioma:",
+    
+    "loading": "Cargando...",
+    "error": "¡Error! ",
+    
+    "send": "Enviar"
+  
+}

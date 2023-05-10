@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 
+import { useTranslation } from 'react-i18next';
 import REGISTER from '../../graphql/mutations/REGISTER';
 import Input from '../../components/Input/Input';
 import Modal from '../../components/Modal/Modal';
@@ -21,6 +22,8 @@ function Register() {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(false);
+
+  const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
 
@@ -66,7 +69,7 @@ function Register() {
 
         <Input
           id="username"
-          label="Username"
+          label={t('username')}
           onChange={({ target }) => setUsername(target.value)}
           placeholder="pedrito"
           type="text"
@@ -76,7 +79,7 @@ function Register() {
 
         <Input
           id="password"
-          label="Password"
+          label={t('password')}
           onChange={({ target }) => setPassword(target.value)}
           placeholder="•••••••••"
           type="password"
@@ -86,7 +89,7 @@ function Register() {
 
         <Input
           id="confirmpassword"
-          label="Confirm Password"
+          label={t('repeatpassword')}
           onChange={({ target }) => setRepeatPassword(target.value)}
           placeholder="•••••••••"
           type="password"
@@ -109,7 +112,7 @@ function Register() {
             htmlFor="remember"
             className="ml-2 text-sm font-medium text-text-base"
           >
-            I agree with the{' '}
+            {t('agree')}{' '}
             <span
               className="text-blue-600 hover:underline dark:text-blue-500"
               onClick={() => setOpen(true)}
@@ -117,7 +120,7 @@ function Register() {
               role="button"
               tabIndex={0}
             >
-              terms and conditions
+              {t('terms')}
             </span>
             .
           </label>
@@ -127,7 +130,7 @@ function Register() {
           type="submit"
           className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
         >
-          Register
+          {t('register')}
         </button>
 
         <button
@@ -135,7 +138,7 @@ function Register() {
           onClick={() => navigate('/')}
           className="flex justify-center items-center text-sm font-medium mt-4"
         >
-          I already have an account <BiLogIn className="logInIcon" />
+          {t('haveaccount')} <BiLogIn className="logInIcon" />
         </button>
       </div>
       <Modal

@@ -4,13 +4,14 @@ import { useQuery, useMutation } from '@apollo/client';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import CURRENT_USER_LOGGED from '../../graphql/queries/CURRENT_USER_LOGGED';
 import UPDATE_USER from '../../graphql/mutations/UPDATE_USER';
 import { convertToBase64 } from '../../utils/helpers';
-import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Input from '../../components/Input/Input';
 
 import defaultProfile from '../../assets/profileNotFound.jpg';
+import { LanguageSelector } from '../../components/LanguageSelector';
 
 function Profile() {
   const [id, setId] = useState('');
@@ -23,6 +24,7 @@ function Profile() {
   const { data, loading, error } = useQuery(CURRENT_USER_LOGGED);
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (data) {
@@ -52,16 +54,22 @@ function Profile() {
     });
   };
 
-  if (loading) return <div>loading......</div>;
-  if (error) return <div>`Error! ${error.message}`</div>;
+  if (loading) return <div>{t('loading')}</div>;
+  if (error)
+    return (
+      <div>
+        {t('error')}
+        {error.message}
+      </div>
+    );
 
   return (
     <form
       className="flex h-full w-full justify-center items-center"
       onSubmit={handleSubmit}
     >
-      <div className="switchMode">
-        <ToggleButton />
+      <div className="absolute top-10 right-10 ">
+        <LanguageSelector />
       </div>
 
       <div className="absolute top-6 left-6 text-5xl">
@@ -84,7 +92,7 @@ function Profile() {
 
         <Input
           id="username"
-          label="Username"
+          label={t('username')}
           onChange={({ target }) => setUsername(target.value)}
           placeholder="pedrito777"
           type="text"
@@ -94,7 +102,7 @@ function Profile() {
 
         <Input
           id="name"
-          label="Name"
+          label={t('name')}
           onChange={({ target }) => setName(target.value)}
           placeholder="pedro"
           type="text"
@@ -106,15 +114,15 @@ function Profile() {
           type="submit"
           className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
         >
-          Save Profile
+          {t('saveprofile')}
         </button>
 
-        <button
+        {/* <button
           type="submit"
           className="text-white  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-blue-800 mt-4"
         >
           Delete Account
-        </button>
+        </button> */}
       </div>
     </form>
   );

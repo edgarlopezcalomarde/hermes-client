@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaLocationArrow } from 'react-icons/fa';
 
+import { useTranslation } from 'react-i18next';
 import ALL_MESSAGE_BETWEN_USERS from '../../graphql/queries/ALL_MESSAGE_BETWEN_USERS';
 import NEW_MESSAGE from '../../graphql/mutations/NEW_MESSAGE';
 import { convertToBase64 } from '../../utils/helpers';
@@ -32,6 +33,8 @@ function SendSection() {
   });
 
   const [open, setOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleSend = () => {
     newMessage({
@@ -106,12 +109,6 @@ function SendSection() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button
-            type="button"
-            className="absolute flex items-center justify-center h-full w-12 right-0 top-0"
-          >
-            🥴
-          </button>
         </div>
       </div>
 
@@ -121,7 +118,7 @@ function SendSection() {
           onClick={handleSend}
           type="submit"
         >
-          <span>Send</span>
+          <span>{t('send')}</span>
           <FaLocationArrow />
         </button>
       </div>
