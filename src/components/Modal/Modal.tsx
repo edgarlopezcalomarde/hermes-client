@@ -16,7 +16,6 @@ function Modal({ title, children, onClose, visible }: ModalProps) {
     };
 
     document.addEventListener('keyup', handleKeyUp);
-
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };

@@ -21,12 +21,11 @@ function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
-
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e: { preventDefault: () => void }) => {

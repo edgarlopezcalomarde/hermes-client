@@ -29,6 +29,8 @@ function ChatList() {
 
   const openChat = (chat: any) => {
     setIsChat(true);
+
+    console.log(chat);
     navigate('/chatlist', { state: { ...chat } });
   };
 
